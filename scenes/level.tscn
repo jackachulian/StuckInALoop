@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxon0mk8dgivo"]
+[gd_scene load_steps=6 format=3 uid="uid://dxon0mk8dgivo"]
 
 [ext_resource type="MeshLibrary" uid="uid://ccfqgnrmjp55p" path="res://resources/mesh_library.tres" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://cahnhtrrxxoja" path="res://scripts/player.gd" id="2_mx8sn"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_w7c3h"]
+[ext_resource type="Script" uid="uid://cciteywr71vqp" path="res://scripts/beat_manager.gd" id="4_ppgk2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w7c3h"]
+radius = 0.6357422
 
 [node name="Level" type="Node3D"]
+
+[node name="BeatManager" type="Node" parent="."]
+script = ExtResource("4_ppgk2")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -10,3 +19,14 @@ mesh_library = ExtResource("1_2q6dc")
 data = {
 "cells": PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65532, 65529, 0, 3, 0, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 5, 65534, 0, 5, 65533, 0, 6, 65533, 0, 7, 65533, 0, 7, 65534, 0, 6, 65534, 0, 6, 65535, 0, 7, 65535, 0, 8, 65535, 0, 9, 65535, 0, 10, 65535, 0, 10, 65532, 0, 10, 65533, 0, 10, 65534, 0, 11, 65532, 0, 11, 65533, 0, 11, 65534, 0, 11, 65535, 0, 12, 65534, 0, 12, 65535, 0, 12, 65533, 0, 12, 65532, 0, 12, 65531, 0, 12, 65530, 0, 12, 65529, 0, 13, 65529, 0, 14, 65529, 0, 65531, 65529, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65531, 65533, 0, 65531, 65532, 0, 65531, 65531, 0, 65531, 65530, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 13, 65535, 0, 13, 65534, 0, 13, 65533, 0, 13, 65532, 0, 13, 65531, 0, 13, 65530, 0, 14, 65530, 0, 14, 65531, 0, 14, 65532, 0, 14, 65533, 0, 14, 65534, 0, 14, 65535, 0, 14, 0, 0)
 }
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.164115, 0)
+script = ExtResource("2_mx8sn")
+
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("2_w7c3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_w7c3h")
