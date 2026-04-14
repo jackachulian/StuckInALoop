@@ -16,6 +16,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Attack finish
 	if is_attacking() and animated_sprite_3d.animation_finished:
+		print("back to idle")
 		animated_sprite_3d.play("idle")
 	
 	# Gravity
@@ -61,7 +62,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_3d.play("run")
 			elif (animated_sprite_3d.animation != "run_start" and animated_sprite_3d.animation != "run"):
 				animated_sprite_3d.play("run_start")
-		elif can_act():
+		else:
 			idle_time += delta
 			if idle_time > 8.0:
 				animated_sprite_3d.play("intro")
@@ -85,4 +86,4 @@ func is_hurt() -> bool:
 	
 ## Can jump, move or attack
 func can_act() -> bool:
-	return (not is_attacking() and not is_hurt())
+	return not (is_attacking() or is_hurt())
