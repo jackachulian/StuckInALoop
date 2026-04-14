@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=6 format=3 uid="uid://ccfqgnrmjp55p"]
+[gd_resource type="MeshLibrary" format=3 uid="uid://ccfqgnrmjp55p"]
 
 [ext_resource type="Material" uid="uid://bqdkw3l3c31s7" path="res://materials/ground_stone.tres" id="1_4eui4"]
 
