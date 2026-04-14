@@ -14,6 +14,10 @@ func _ready() -> void:
 	was_on_floor_last_process = true
 	
 func _physics_process(delta: float) -> void:
+	# Attack finish
+	if is_attacking() and animated_sprite_3d.animation_finished:
+		animated_sprite_3d.play("idle")
+	
 	# Gravity
 	if not is_on_floor():
 		idle_time = 0
@@ -22,6 +26,16 @@ func _physics_process(delta: float) -> void:
 			pass
 			# Once HL finishes the jump anim
 			#animated_sprite_3d.play("fall") 
+		
+	# Attack
+	if Input.is_action_just_pressed("punch") and is_on_floor() and can_act():
+		print("punched")
+		if Input.is_action_pressed("ui_up"):
+			animated_sprite_3d.play("punch_high")
+		elif Input.is_action_pressed("ui_down"):
+			animated_sprite_3d.play("punch_low")
+		else:
+			animated_sprite_3d.play("punch_middle")
 		
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and can_act():
@@ -63,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	
 func is_attacking() -> bool:
 	return (animated_sprite_3d.animation == "punch_low"
-	or animated_sprite_3d.animation == "punch_medium"
+	or animated_sprite_3d.animation == "punch_middle"
 	or animated_sprite_3d.animation == "punch_high")
 	
 func is_hurt() -> bool:
