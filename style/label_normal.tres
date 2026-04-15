@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://okttlvi03oa4"]
+
+[ext_resource type="FontFile" uid="uid://g2xtgddux3yq" path="res://fonts/Boldonse-Regular.ttf" id="1_mq8tq"]
+
+[sub_resource type="FontVariation" id="FontVariation_5pajh"]
+base_font = ExtResource("1_mq8tq")
+
+[resource]
+font = SubResource("FontVariation_5pajh")
+font_size = 20
+font_color = Color(0, 0, 0, 1)

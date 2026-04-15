@@ -8,6 +8,12 @@
 [ext_resource type="FontVariation" uid="uid://c5g0lpulvxn0j" path="res://fonts/spaced_chars.tres" id="5_8ln24"]
 [ext_resource type="StyleBox" uid="uid://b7l1lvix4pwrj" path="res://fonts/main_menu_button_focused.tres" id="7_tbmy8"]
 [ext_resource type="Script" uid="uid://d2m1rq0ucb3e0" path="res://scripts/main_menu_button.gd" id="8_jk1qb"]
+[ext_resource type="Script" uid="uid://de5stmbroblb" path="res://scripts/options.gd" id="9_flqon"]
+[ext_resource type="StyleBox" uid="uid://5jl2qng8on1r" path="res://style/slider.tres" id="9_lgwnu"]
+[ext_resource type="StyleBox" uid="uid://bi7xy1rp08c17" path="res://style/grabber_area.tres" id="10_flqon"]
+[ext_resource type="StyleBox" uid="uid://dvy21afyguqqw" path="res://style/grabber_area_highlight.tres" id="11_rcqid"]
+[ext_resource type="LabelSettings" uid="uid://okttlvi03oa4" path="res://style/label_normal.tres" id="13_1ajci"]
+[ext_resource type="Script" uid="uid://bs7rp2xhlixr" path="res://scripts/timing_offset_label.gd" id="13_rcqid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
 bg_color = Color(0.89925843, 0.8992583, 0.8992588, 1)
@@ -90,6 +96,62 @@ font_color = Color(0, 0, 0, 1)
 stacked_shadow_count = 1
 stacked_shadow_0/offset = Vector2(-16, 8)
 stacked_shadow_0/color = Color(0, 0, 0, 0.10980392)
+
+[sub_resource type="FontVariation" id="FontVariation_1ajci"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b55j"]
+font = SubResource("FontVariation_1ajci")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_7b55j"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pajh"]
+font = SubResource("FontVariation_7b55j")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_5pajh"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j7ex8"]
+font = SubResource("FontVariation_5pajh")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_a8gd2"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hstxw"]
+font = SubResource("FontVariation_a8gd2")
+font_size = 20
+font_color = Color(0.033408374, 0.20555678, 0.4384347, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_8egab"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gw5y6"]
+font = SubResource("FontVariation_8egab")
+font_size = 20
+font_color = Color(0.25490198, 0.59607846, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_lgwnu"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_flqon"]
+font = SubResource("FontVariation_lgwnu")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_rcqid"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ajci"]
+font = SubResource("FontVariation_rcqid")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control" unique_id=72014888]
 layout_mode = 3
@@ -352,6 +414,197 @@ label_settings = SubResource("LabelSettings_rcqid")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="OptionsContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1719229809]
+layout_mode = 0
+offset_right = 1104.0
+offset_bottom = 548.0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("9_flqon")
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer" unique_id=625917844]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lgwnu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer" unique_id=195045961]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer" unique_id=1284581714]
+layout_mode = 2
+size_flags_vertical = 0
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_2xllf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer" unique_id=842596175]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MusicVolume" type="Control" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=66099258]
+custom_minimum_size = Vector2(550, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/MusicVolume" unique_id=480479094]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/MusicVolume/HBoxContainer" unique_id=1532153969]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_7b55j")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/MusicVolume/HBoxContainer" unique_id=684431014]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = ExtResource("9_lgwnu")
+theme_override_styles/grabber_area = ExtResource("10_flqon")
+theme_override_styles/grabber_area_highlight = ExtResource("11_rcqid")
+step = 10.0
+value = 50.0
+
+[node name="Percent" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/MusicVolume/HBoxContainer" unique_id=813971005]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "75%"
+label_settings = SubResource("LabelSettings_5pajh")
+vertical_alignment = 1
+
+[node name="SFXVolume" type="Control" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1232513398]
+custom_minimum_size = Vector2(550, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/SFXVolume" unique_id=1314959004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/SFXVolume/HBoxContainer" unique_id=1993541203]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_7b55j")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/SFXVolume/HBoxContainer" unique_id=155175038]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = ExtResource("9_lgwnu")
+theme_override_styles/grabber_area = ExtResource("10_flqon")
+theme_override_styles/grabber_area_highlight = ExtResource("11_rcqid")
+step = 10.0
+value = 50.0
+
+[node name="Percent" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/SFXVolume/HBoxContainer" unique_id=2120895843]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "75%"
+label_settings = SubResource("LabelSettings_5pajh")
+vertical_alignment = 1
+
+[node name="TimingOffset" type="Control" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=877055860]
+custom_minimum_size = Vector2(550, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset" unique_id=1374605453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer" unique_id=1755455692]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Timing Offset"
+label_settings = SubResource("LabelSettings_7b55j")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer" unique_id=600902024]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 1
+text = "<  100 MS  >"
+label_settings = ExtResource("13_1ajci")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_rcqid")
+normal_label_settings = SubResource("LabelSettings_j7ex8")
+hover_label_settings = SubResource("LabelSettings_hstxw")
+focus_label_settings = SubResource("LabelSettings_gw5y6")
+
+[node name="BackButton" type="Button" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer" unique_id=237611002]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xc1rk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sl1c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ruo4s")
+theme_override_styles/focus = ExtResource("7_tbmy8")
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/BackButton" unique_id=648375571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK"
+label_settings = SubResource("LabelSettings_flqon")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoverArrow" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/BackButton" unique_id=672324155]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -82.0
+offset_right = 94.0
+offset_bottom = 69.0
+grow_vertical = 2
+text = "<"
+label_settings = SubResource("LabelSettings_1ajci")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="." unique_id=1979771220]
 layout_mode = 0
 offset_left = 3.0
@@ -365,6 +618,11 @@ text = "Copyright Neutral Fruit Themed Electronic Device"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/CreditsContainer/PanelContainer/VBoxContainer/BackButton" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/BackButton" to="." method="_on_options_back_pressed"]
 
 [editable path="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/CreditsButton"]
 [editable path="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/OptionsButton"]

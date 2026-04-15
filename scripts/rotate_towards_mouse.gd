@@ -3,7 +3,7 @@ extends Node3D
 @export var rotation_speed: float = 3.0
 @export var max_rotation_angle: float = 15.0 # degrees
 
-@export var look_point_movement_scale: Vector2 = Vector2(0.1, 0.1)
+@export var look_point_movement_scale: Vector2 = Vector2(0.05, 0.05)
 @export var look_speed: float = 10.0  # Higher = faster movement
 
 var current_look_point: Vector3
