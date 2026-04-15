@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://hjvgbpi8uwmu"]
+
+[ext_resource type="Texture2D" uid="uid://2mdvuafr4wi6" path="res://sprites/beat_marker.png" id="1_f5jpa"]
+[ext_resource type="Script" uid="uid://br6kuvftuxmih" path="res://scripts/beat_marker.gd" id="2_pom5a"]
+
+[node name="BeatMarker" type="TextureRect" unique_id=14803997]
+self_modulate = Color(0.9843137, 1, 0.101960786, 1)
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+texture = ExtResource("1_f5jpa")
+expand_mode = 3
+script = ExtResource("2_pom5a")

@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://2yvq6yiiep7y"]
+
+[ext_resource type="FontFile" uid="uid://g2xtgddux3yq" path="res://fonts/Boldonse-Regular.ttf" id="1_wu84c"]
+[ext_resource type="Texture2D" uid="uid://vcipxbjbfngy" path="res://sprites/battery.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cdtlp8ar0ey7w" path="res://sprites/logo.png" id="3_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://dcrk2e76c53mw" path="res://scenes/main_menu/main_menu_button.tscn" id="4_oa1go"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
+bg_color = Color(0.89925843, 0.8992583, 0.8992588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jk1qb"]
+content_margin_left = 8.0
+content_margin_top = 2.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.38170326, 0.38170326, 0.3817031, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dd4i"]
+font = ExtResource("1_wu84c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgwnu"]
+bg_color = Color(0.9867516, 0.9867516, 0.9867516, 1)
+
+[sub_resource type="Gradient" id="Gradient_flqon"]
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.28235295)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rcqid"]
+gradient = SubResource("Gradient_flqon")
+width = 200
+
+[sub_resource type="Gradient" id="Gradient_wu84c"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ln24"]
+gradient = SubResource("Gradient_wu84c")
+
+[node name="MainMenu" type="Control" unique_id=72014888]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=776016772]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.21176471, 0.5647059, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=322480899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/MarginContainer" unique_id=813588808]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbmy8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer" unique_id=351668861]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Topbar" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer" unique_id=1116853373]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jk1qb")
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/Topbar" unique_id=2030753970]
+layout_mode = 2
+text = "Now Playing"
+label_settings = SubResource("LabelSettings_5dd4i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/Topbar" unique_id=1218489045]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Label3" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/Topbar/HBoxContainer" unique_id=1229894607]
+layout_mode = 2
+text = "4:20"
+label_settings = SubResource("LabelSettings_5dd4i")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/Topbar/HBoxContainer" unique_id=1829624202]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("2_8ln24")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/Topbar/HBoxContainer" unique_id=1028715642]
+layout_mode = 2
+text = "69%"
+label_settings = SubResource("LabelSettings_5dd4i")
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer" unique_id=1523190328]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1596423614]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=370864687]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lgwnu")
+
+[node name="GradientEdge" type="TextureRect" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1468552774]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_rcqid")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1260116123]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1098535757]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1141288425]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=895570057]
+layout_mode = 2
+ratio = 1.7778
+
+[node name="GameplayVideo" type="TextureRect" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/AspectRatioContainer" unique_id=400612579]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_8ln24")
+expand_mode = 1
+
+[node name="logo" type="TextureRect" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=43557331]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_rtw2f")
+expand_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=600052706]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lgwnu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=974534496]
+layout_mode = 2
+
+[node name="PlayButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=783315531 instance=ExtResource("4_oa1go")]
+layout_mode = 2
+
+[node name="ExtrasButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=936077062 instance=ExtResource("4_oa1go")]
+layout_mode = 2
+
+[node name="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/ExtrasButton" index="0" unique_id=2005296554]
+text = "EXTRAS"
+
+[node name="OptionsButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=1258108129 instance=ExtResource("4_oa1go")]
+layout_mode = 2
+
+[node name="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/OptionsButton" index="0" unique_id=2005296554]
+text = "OPTIONS"
+
+[node name="QuitButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=479334128 instance=ExtResource("4_oa1go")]
+layout_mode = 2
+
+[node name="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/QuitButton" index="0" unique_id=2005296554]
+text = "QUIT"
+
+[node name="Label" type="Label" parent="." unique_id=1979771220]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 610.0
+offset_right = 1155.0
+offset_bottom = 649.0
+theme_override_colors/font_color = Color(0.4744329, 0.022836477, 0.31031126, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 12
+text = "Copyright Neutral Fruit Themed Electronic Device"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[editable path="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/ExtrasButton"]
+[editable path="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/OptionsButton"]
+[editable path="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2/VBoxContainer/QuitButton"]

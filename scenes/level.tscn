@@ -68,14 +68,25 @@
 [ext_resource type="Texture2D" uid="uid://bnas44u30s3p3" path="res://sprites/PROTAG/500x500/Punch/spr_gamejam_protag_punchMIDDLE_0013.png" id="59_y73rr"]
 [ext_resource type="Texture2D" uid="uid://b872y42wtyvlr" path="res://sprites/bg_buildings.png" id="67_jydfl"]
 [ext_resource type="Script" uid="uid://bf0w1qgs5me62" path="res://scripts/parallax_sprite_3d.gd" id="68_d5irf"]
+[ext_resource type="AudioStream" uid="uid://bc4mtrq20badv" path="res://audio/gamejam22726_FINAL.wav" id="68_ltwek"]
 [ext_resource type="Texture2D" uid="uid://wu1m08kp5sbv" path="res://sprites/bg_sky.png" id="68_u0n8q"]
+[ext_resource type="Texture2D" uid="uid://2mdvuafr4wi6" path="res://sprites/beat_marker.png" id="71_ltwek"]
+[ext_resource type="Script" uid="uid://bi0vwmyfkqmgv" path="res://scripts/beat_bar.gd" id="71_vry8j"]
+[ext_resource type="PackedScene" uid="uid://hjvgbpi8uwmu" path="res://scenes/beat_marker.tscn" id="72_vry8j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c1pbi"]
 friction = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c1pbi"]
 radius = 0.75
-height = 2.5
+height = 2.46875
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idnaj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vwqyp"]
+material = SubResource("StandardMaterial3D_idnaj")
+radius = 1.0
+height = 2.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smfc2"]
 animations = [{
@@ -268,6 +279,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("33_jydfl")
+}, {
+"duration": 1.0,
 "texture": ExtResource("29_5ga6x")
 }, {
 "duration": 1.0,
@@ -278,9 +292,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("32_xmwm8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_jydfl")
 }],
 "loop": true,
 "name": &"run",
@@ -321,7 +332,7 @@ height = 3.7308655
 script = ExtResource("4_ppgk2")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1248720188]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1.09278474e-07, -1, 0, 2.5, -4.371139e-08, 0, 0, -4)
 mesh_library = ExtResource("1_2q6dc")
 physics_material = SubResource("PhysicsMaterial_c1pbi")
 data = {
@@ -329,7 +340,7 @@ data = {
 }
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=957345421]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.164, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2249827, 0.47963297)
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -341,22 +352,38 @@ jump_velocity = 32.0
 gravity = -85.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=370398129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015625, 0)
 shape = SubResource("CapsuleShape3D_c1pbi")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player" unique_id=1491621810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52457905, 0)
+[node name="FlipParent" type="Node3D" parent="Player" unique_id=1245374944]
+
+[node name="ShadowMesh" type="MeshInstance3D" parent="Player/FlipParent" unique_id=773997298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23664665, 0, 0)
+visible = false
+transparency = 1.0
+mesh = SubResource("SphereMesh_vwqyp")
+skeleton = NodePath("../..")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/FlipParent" unique_id=1491621810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, 0)
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_smfc2")
-animation = &"run_start"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1205810095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 12)
 
 [node name="BgSky" type="Sprite3D" parent="Player/Camera3D" unique_id=1789416212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -53.098648)
 extra_cull_margin = 16384.0
 pixel_size = 0.1
+render_priority = -20
 texture = ExtResource("68_u0n8q")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/Camera3D" unique_id=1737419508]
+stream = ExtResource("68_ltwek")
+autoplay = true
 
 [node name="PunchMiddleHitbox" type="StaticBody3D" parent="Player" unique_id=1620630954]
 visible = false
@@ -388,15 +415,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.580524, 2.3374872, 0)
 shape = SubResource("CapsuleShape3D_d5irf")
 debug_color = Color(0.99218434, 0, 0.26181343, 0.41960785)
 
-[node name="BgBuildings" type="Sprite3D" parent="Player" unique_id=2126799649 node_paths=PackedStringArray("camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0830855, -15.425812)
+[node name="BgBuildings" type="Sprite3D" parent="." unique_id=2126799649 node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.247086, -14.425812)
 extra_cull_margin = 16384.0
+custom_aabb = AABB(-10000, -10000, -10000, 20000, 20000, 20000)
 pixel_size = 0.05
 texture = ExtResource("67_jydfl")
 script = ExtResource("68_d5irf")
-camera = NodePath("../Camera3D")
+camera = NodePath("../Player/Camera3D")
+create_children = true
 
-[node name="BgBuildings2" type="Sprite3D" parent="Player/BgBuildings" unique_id=613150319]
+[node name="BgBuildings2" type="Sprite3D" parent="BgBuildings" unique_id=613150319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.160793, 0)
 extra_cull_margin = 16384.0
 flip_v = true
@@ -405,24 +434,110 @@ texture = ExtResource("67_jydfl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=285545575]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1387341097]
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1387341097]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 6.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1014369005]
+[node name="BeatBar" type="ColorRect" parent="CanvasLayer/UI" unique_id=1014369005]
+custom_minimum_size = Vector2(750, 15)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -321.0
-offset_top = -40.0
-offset_right = 320.0
-offset_bottom = -15.0
+offset_left = -375.0
+offset_top = -56.0
+offset_right = 375.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
+color = Color(0, 0.6500001, 1, 0.7058824)
+script = ExtResource("71_vry8j")
+marker_scene = ExtResource("72_vry8j")
+
+[node name="BeatCenter" type="Control" parent="CanvasLayer/UI/BeatBar" unique_id=113054813]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/BeatBar/BeatCenter" unique_id=1064389782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -14.500008
+offset_right = 14.5
+offset_bottom = 14.499992
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(1, 0.21176471, 0.5647059, 1)
+
+[node name="BeatMarker" type="TextureRect" parent="CanvasLayer/UI/BeatBar/BeatCenter" unique_id=14803997]
+modulate = Color(0.9843137, 1, 0.101960786, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("71_ltwek")
+expand_mode = 3
+
+[node name="BeatMarker2" type="TextureRect" parent="CanvasLayer/UI/BeatBar/BeatCenter" unique_id=1613460484]
+modulate = Color(0.9843137, 1, 0.101960786, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 26.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("71_ltwek")
+expand_mode = 3
+flip_h = true
+
+[node name="BeatMarkers" type="Control" parent="CanvasLayer/UI/BeatBar" unique_id=2101722678]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1441216833]
+transform = Transform3D(0.9102505, -0.23611265, 0.34013942, 0.022593852, 0.8485774, 0.52858853, -0.41344103, -0.47346297, 0.7777527, 0, 30.719896, 14.432915)
+shadow_enabled = true

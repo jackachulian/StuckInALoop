@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dcrk2e76c53mw"]
+
+[ext_resource type="FontFile" uid="uid://g2xtgddux3yq" path="res://fonts/Boldonse-Regular.ttf" id="1_21xgv"]
+[ext_resource type="FontVariation" uid="uid://c5g0lpulvxn0j" path="res://fonts/spaced_chars.tres" id="2_6dnpj"]
+[ext_resource type="StyleBox" uid="uid://b7l1lvix4pwrj" path="res://fonts/main_menu_button_focused.tres" id="2_22awc"]
+[ext_resource type="Script" uid="uid://d2m1rq0ucb3e0" path="res://scripts/main_menu_button.gd" id="3_22awc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xc1rk"]
+
+[sub_resource type="Gradient" id="Gradient_22awc"]
+colors = PackedColorArray(0, 0.37889835, 0.5504002, 1, 4.6205523e-06, 0.6334131, 0.899631, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xc1rk"]
+gradient = SubResource("Gradient_22awc")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sl1c"]
+texture = SubResource("GradientTexture2D_xc1rk")
+modulate_color = Color(0.7738493, 0.7872037, 0.7839199, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruo4s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2xllf"]
+font = ExtResource("2_6dnpj")
+font_size = 56
+font_color = Color(0, 0, 0, 1)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-16, 8)
+stacked_shadow_0/color = Color(0, 0, 0, 0.10980392)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xc1rk"]
+font = ExtResource("2_6dnpj")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-16, 8)
+stacked_shadow_0/color = Color(0, 0, 0, 0.10980392)
+
+[node name="MainMenuButton" type="Button" unique_id=783315531]
+offset_right = 400.0
+offset_bottom = 200.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_21xgv")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xc1rk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sl1c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ruo4s")
+theme_override_styles/focus = ExtResource("2_22awc")
+script = ExtResource("3_22awc")
+
+[node name="Label" type="Label" parent="." unique_id=2005296554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = SubResource("LabelSettings_2xllf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoverArrow" type="Label" parent="." unique_id=1046365733]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -84.0
+offset_right = 79.0
+offset_bottom = 67.0
+grow_vertical = 2
+text = "<"
+label_settings = SubResource("LabelSettings_xc1rk")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c2mkifkvjwwyf"]
+
+[ext_resource type="PackedScene" uid="uid://2yvq6yiiep7y" path="res://scenes/main_menu.tscn" id="1_6llvq"]
+[ext_resource type="Script" uid="uid://gq603hhtb8ch" path="res://scripts/main_menu_camera.gd" id="1_n4olr"]
+[ext_resource type="AudioStream" uid="uid://b2011f8xlyixj" path="res://audio/STUCK_IN_A_LOOP_TITLE.wav" id="2_hdukv"]
+[ext_resource type="Script" uid="uid://d1jnlhang6akk" path="res://scripts/rotate_towards_mouse.gd" id="2_qm0ip"]
+
+[sub_resource type="Environment" id="Environment_qm0ip"]
+background_mode = 1
+background_color = Color(0.0074036163, 0.19140968, 0.40316477, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.25490198, 0.59607846, 1, 1)
+ambient_light_energy = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejg4m"]
+albedo_color = Color(1, 0.21176471, 0.5647059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6llvq"]
+material = SubResource("StandardMaterial3D_ejg4m")
+size = Vector3(1, 1.25, 0.2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n4olr"]
+viewport_path = NodePath("CanvasLayer/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm0ip"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_n4olr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hdukv"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_qm0ip")
+size = Vector2(1, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4olr"]
+size = Vector3(1, 0.6, 0.001)
+
+[node name="MainMenu3D" type="Node3D" unique_id=2075189576]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1925150922 node_paths=PackedStringArray("ui_viewport", "ui_object")]
+transform = Transform3D(1, 0, 0, 0, 0.9995027, 0.031532872, 0, -0.031532872, 0.9995027, 0, 0.04047303, 0.53772604)
+environment = SubResource("Environment_qm0ip")
+script = ExtResource("1_n4olr")
+ui_viewport = NodePath("../CanvasLayer/SubViewport")
+ui_object = NodePath("../Ipod/IpodMesh/ScreenStaticBody3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1085058927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22979522, -0.016506108, -0.015734196)
+stream = ExtResource("2_hdukv")
+autoplay = true
+
+[node name="Ipod" type="Node3D" parent="." unique_id=1203281519]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_qm0ip")
+
+[node name="IpodMesh" type="MeshInstance3D" parent="Ipod" unique_id=725552198]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.3, 0)
+mesh = SubResource("BoxMesh_6llvq")
+skeleton = NodePath("../..")
+
+[node name="ScreenStaticBody3D" type="StaticBody3D" parent="Ipod/IpodMesh" unique_id=1024039447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0.101)
+
+[node name="ScreenMesh" type="MeshInstance3D" parent="Ipod/IpodMesh/ScreenStaticBody3D" unique_id=2091039588]
+mesh = SubResource("QuadMesh_hdukv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ipod/IpodMesh/ScreenStaticBody3D" unique_id=462112764]
+shape = SubResource("BoxShape3D_n4olr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=151756143]
+transform = Transform3D(0.96342963, -0.25541133, 0.08104579, 0.17520475, 0.82927364, 0.53066796, -0.20274773, -0.49706155, 0.84369624, 0.78577065, 6.890397, 2.8821616)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1040050950]
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer" unique_id=267911567]
+size = Vector2i(2880, 1620)
+size_2d_override = Vector2i(1152, 648)
+size_2d_override_stretch = true
+
+[node name="MainMenu" parent="CanvasLayer/SubViewport" unique_id=72014888 instance=ExtResource("1_6llvq")]
