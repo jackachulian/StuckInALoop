@@ -8,10 +8,18 @@ extends Node
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $"../Player/Camera3D/AudioStreamPlayer3D"
 
 var current_beat: float
+var last_signaled_beat: int
+
+signal beat
 
 func _ready() -> void:
 	# Start slightly behind the beat based on timing offset 
 	current_beat = ((options_manager.beat_offset_milliseconds / 1000.0) * beats_per_second) * -1
+	last_signaled_beat = floor(current_beat)
 	
 func _process(delta: float) -> void:
 	current_beat += beats_per_second * delta
+	
+	if (last_signaled_beat + 1 <= current_beat):
+		beat.emit()
+		last_signaled_beat += 1

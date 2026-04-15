@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+# ==== PLAYER
+
 @export var rhythm_manager: RhythmManager
 @export var speed = 18.0
 @export var slide_speed = 22.5
@@ -8,9 +10,13 @@ extends CharacterBody3D
 @export var coyote_time := 0.1
 @export var jump_buffer_time := 0.1
 
-
 @onready var animated_sprite_3d: AnimatedSprite3D = $FlipParent/AnimatedSprite3D
 @onready var flip_parent: Node3D = $FlipParent
+
+@onready var punch_middle_hitbox: Hitbox = $FlipParent/PunchMiddleHitbox
+@onready var punch_low_hitbox: Hitbox = $FlipParent/PunchLowHitbox
+@onready var punch_high_hitbox: Hitbox = $FlipParent/PunchHighHitbox
+
 
 var was_on_floor_last_process: bool
 var idle_time: float
@@ -20,12 +26,22 @@ var jump_buffer_timer := 0.0
 
 func _ready() -> void:
 	was_on_floor_last_process = true
-	animated_sprite_3d.animation_finished.connect(on_anim_finished)
+	animated_sprite_3d.animation_finished.connect(_on_anim_finished)
+	animated_sprite_3d.frame_changed.connect(_on_frame_changed)
 	
-func on_anim_finished() -> void:
+func _on_frame_changed():
+	var hit_direction := 1 if facing_right else -1
+	
+	if animated_sprite_3d.animation == "punch_middle" and animated_sprite_3d.frame == 2:
+		punch_middle_hitbox.hit(Vector3(hit_direction*12.5, 10.0, 0.0))
+	elif animated_sprite_3d.animation == "punch_high" and animated_sprite_3d.frame == 2:
+		punch_high_hitbox.hit(Vector3(hit_direction*5.0, 15.0, 0.0))
+	elif animated_sprite_3d.animation == "punch_low" and animated_sprite_3d.frame == 1:
+		punch_low_hitbox.hit(Vector3(hit_direction*22.5, 7.5, 0.0))
+	
+func _on_anim_finished() -> void:
 	# Attack finish
 	if is_in_attack_animation():
-		print("back to idle")
 		play_animation_synced("idle", 2)
 		
 	# run_start into run

@@ -23,14 +23,12 @@ func _ready() -> void:
 		get_parent().add_child.call_deferred(new)
 		var child_pos = global_position
 		child_pos.x += size.x * i
-		print("child's pos will be ", child_pos)
 		new.call_deferred("initialize_child", child_pos)
 
 func initialize_child(global_pos: Vector3) -> void:
 	global_position = global_pos
 	start_pos = global_position
 	camera_start_pos = camera.global_position
-	print("global pos set to ", global_pos)
 
 func get_sprite3d_world_size() -> Vector2:
 	var tex_size = texture.get_size()

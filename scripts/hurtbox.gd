@@ -1,0 +1,9 @@
+extends Area3D
+
+@export var entity: CharacterBody3D
+
+func take_damage(damage: int):
+	entity.take_damage(damage)
+
+func take_knockback(knockback: Vector3):
+	entity.velocity = knockback
