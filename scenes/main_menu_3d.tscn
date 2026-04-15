@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://drsu0ah46bes7" path="res://scripts/main_menu_3d.gd" id="1_vyhg1"]
 [ext_resource type="AudioStream" uid="uid://b2011f8xlyixj" path="res://audio/STUCK_IN_A_LOOP_TITLE.wav" id="2_hdukv"]
 [ext_resource type="Script" uid="uid://d1jnlhang6akk" path="res://scripts/rotate_towards_mouse.gd" id="2_qm0ip"]
+[ext_resource type="PackedScene" uid="uid://dp8lm0i3k1rno" path="res://scenes/scene_transition.tscn" id="6_gu81k"]
 
 [sub_resource type="Environment" id="Environment_qm0ip"]
 background_mode = 1
@@ -20,12 +21,12 @@ albedo_color = Color(1, 0.21176471, 0.5647059, 1)
 material = SubResource("StandardMaterial3D_ejg4m")
 size = Vector3(1, 1.25, 0.2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n4olr"]
-viewport_path = NodePath("CanvasLayer/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_gu81k"]
+viewport_path = NodePath("MainMenuScreenLayer/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm0ip"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_n4olr")
+albedo_texture = SubResource("ViewportTexture_gu81k")
 
 [sub_resource type="QuadMesh" id="QuadMesh_hdukv"]
 resource_local_to_scene = true
@@ -42,7 +43,7 @@ script = ExtResource("1_vyhg1")
 transform = Transform3D(1, 0, 0, 0, 0.9995027, 0.031532872, 0, -0.031532872, 0.9995027, 0, 0.04047303, 0.53772604)
 environment = SubResource("Environment_qm0ip")
 script = ExtResource("1_n4olr")
-ui_viewport = NodePath("../CanvasLayer/SubViewport")
+ui_viewport = NodePath("../MainMenuScreenLayer/SubViewport")
 ui_object = NodePath("../Ipod/IpodMesh/ScreenStaticBody3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1085058927]
@@ -72,11 +73,14 @@ shape = SubResource("BoxShape3D_n4olr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=151756143]
 transform = Transform3D(0.96342963, -0.25541133, 0.08104579, 0.17520475, 0.82927364, 0.53066796, -0.20274773, -0.49706155, 0.84369624, 0.78577065, 6.890397, 2.8821616)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1040050950]
+[node name="MainMenuScreenLayer" type="CanvasLayer" parent="." unique_id=1040050950]
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer" unique_id=267911567]
+[node name="SubViewport" type="SubViewport" parent="MainMenuScreenLayer" unique_id=267911567]
 size = Vector2i(2880, 1620)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
 
-[node name="MainMenu" parent="CanvasLayer/SubViewport" unique_id=72014888 instance=ExtResource("1_6llvq")]
+[node name="MainMenu" parent="MainMenuScreenLayer/SubViewport" unique_id=72014888 node_paths=PackedStringArray("scene_transition") instance=ExtResource("1_6llvq")]
+scene_transition = NodePath("../../../SceneTransition")
+
+[node name="SceneTransition" parent="." unique_id=189451907 instance=ExtResource("6_gu81k")]

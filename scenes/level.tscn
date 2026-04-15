@@ -75,6 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://2mdvuafr4wi6" path="res://sprites/beat_marker.png" id="71_ltwek"]
 [ext_resource type="Script" uid="uid://bi0vwmyfkqmgv" path="res://scripts/beat_bar.gd" id="71_vry8j"]
 [ext_resource type="PackedScene" uid="uid://hjvgbpi8uwmu" path="res://scenes/beat_marker.tscn" id="72_vry8j"]
+[ext_resource type="PackedScene" uid="uid://dp8lm0i3k1rno" path="res://scenes/scene_transition.tscn" id="76_s1acf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c1pbi"]
 friction = 0.5
@@ -94,16 +95,16 @@ height = 2.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("25_oksur")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_jide8")
-}, {
-"duration": 1.0,
 "texture": ExtResource("27_4h8xp")
 }, {
 "duration": 1.0,
 "texture": ExtResource("28_ql8jr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_oksur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_jide8")
 }],
 "loop": true,
 "name": &"idle",
@@ -358,7 +359,8 @@ floor_block_on_wall = false
 floor_snap_length = 0.2
 script = ExtResource("2_mx8sn")
 rhythm_manager = NodePath("../RhythmManager")
-jump_velocity = 32.0
+speed = 20.0
+jump_velocity = 33.0
 gravity = -85.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=370398129]
@@ -553,3 +555,5 @@ offset_bottom = 40.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1441216833]
 transform = Transform3D(0.9102505, -0.23611265, 0.34013942, 0.022593852, 0.8485774, 0.52858853, -0.41344103, -0.47346297, 0.7777527, 0, 30.719896, 14.432915)
 shadow_enabled = true
+
+[node name="SceneTransition" parent="." unique_id=189451907 instance=ExtResource("76_s1acf")]

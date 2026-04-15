@@ -5,16 +5,18 @@ extends CharacterBody3D
 @export var slide_speed = 22.5
 @export var jump_velocity = 6.0
 @export var gravity = -9.8
+@export var coyote_time := 0.1
+@export var jump_buffer_time := 0.1
+
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $FlipParent/AnimatedSprite3D
 @onready var flip_parent: Node3D = $FlipParent
 
-
 var was_on_floor_last_process: bool
-
 var idle_time: float
-
 var facing_right: bool = true
+var coyote_timer := 0.0
+var jump_buffer_timer := 0.0
 
 func _ready() -> void:
 	was_on_floor_last_process = true
@@ -47,7 +49,6 @@ func _physics_process(delta: float) -> void:
 			#velocity.x /= 2
 		
 		idle_time = 0
-		print("punched")
 		if Input.is_action_pressed("ui_up"):
 			animated_sprite_3d.play("punch_high")
 			animated_sprite_3d.frame = 0
@@ -63,10 +64,24 @@ func _physics_process(delta: float) -> void:
 	if animated_sprite_3d.animation in ["punch_middle", "punch_high"] and is_on_floor():
 		velocity.x = 0
 		
+	# Coyote time
+	if is_on_floor():
+		coyote_timer = coyote_time
+	else:
+		coyote_timer -= delta
+		
+	# Buffer a jump
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_timer = jump_buffer_time
+	else:
+		jump_buffer_timer -= delta
+		
 	# Jump
-	if Input.is_action_just_pressed("jump") and is_on_floor() and can_act():
+	if jump_buffer_timer > 0 and coyote_timer > 0 and can_act():
 		idle_time = 0
 		velocity.y = jump_velocity
+		jump_buffer_timer = 0
+		coyote_timer = 0
 		# Once HL finishes the jump anim
 		#animated_sprite_3d.play("jump") 
 		

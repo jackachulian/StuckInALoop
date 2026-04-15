@@ -1,12 +1,18 @@
 extends Control
 
+@export var scene_transition: SceneTransition
+
 @onready var main_menu_container: MarginContainer = $ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer
 @onready var credits_container: MarginContainer = $ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/CreditsContainer
 @onready var options_container: MarginContainer = $ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer
 
-
 func _ready() -> void:
 	credits_container.hide()
+	options_container.hide()
+	
+func _on_play_pressed():
+	scene_transition.transition_to_scene("res://scenes/level.tscn")
+	
 
 func _on_credits_pressed():
 	credits_container.show()
