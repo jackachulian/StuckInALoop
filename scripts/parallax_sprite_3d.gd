@@ -1,5 +1,6 @@
 extends Sprite3D
 
+
 @export var camera: Camera3D
 @export var scale_factor: float = 0.2
 
