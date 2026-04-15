@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
+@export var rhythm_manager: RhythmManager
 @export var speed = 18.0
 @export var slide_speed = 22.5
 @export var jump_velocity = 6.0
 @export var gravity = -9.8
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $FlipParent/AnimatedSprite3D
-@onready var beat_bar: BeatBar = $"../CanvasLayer/UI/BeatBar"
 @onready var flip_parent: Node3D = $FlipParent
 
 
@@ -135,10 +135,10 @@ func can_act() -> bool:
 func play_animation_synced(anim: StringName, anim_beat_length: float = 1.0, beat_offset: float = 0.0) -> void:
 	animated_sprite_3d.animation = anim
 	var frame_count = animated_sprite_3d.sprite_frames.get_frame_count(anim)
-	var anim_time = anim_beat_length / beat_bar.beats_per_second
+	var anim_time = anim_beat_length / rhythm_manager.beats_per_second
 	var anim_fps = frame_count / anim_time
 	
-	var offset_beat = beat_bar.current_beat + beat_offset
+	var offset_beat = rhythm_manager.current_beat + beat_offset
 	var anim_progress = (offset_beat / anim_beat_length) - floor(offset_beat / anim_beat_length)
 	var frame = floor(anim_progress * frame_count)
 	var frame_progress = (anim_progress * frame_count) - floor(anim_progress * frame_count)
