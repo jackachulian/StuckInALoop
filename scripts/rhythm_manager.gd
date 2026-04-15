@@ -3,7 +3,7 @@ extends Node
 
 @export var options_manager: OptionsManager
 
-@export var beats_per_second: float = 170.0/60.0
+@export var beats_per_second: float = 168.0/60.0
 
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $"../Player/Camera3D/AudioStreamPlayer3D"
 

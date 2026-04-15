@@ -70,8 +70,8 @@
 [ext_resource type="Texture2D" uid="uid://bnas44u30s3p3" path="res://sprites/PROTAG/500x500/Punch/spr_gamejam_protag_punchMIDDLE_0013.png" id="59_y73rr"]
 [ext_resource type="Texture2D" uid="uid://b872y42wtyvlr" path="res://sprites/bg_buildings.png" id="67_jydfl"]
 [ext_resource type="Script" uid="uid://bf0w1qgs5me62" path="res://scripts/parallax_sprite_3d.gd" id="68_d5irf"]
-[ext_resource type="AudioStream" uid="uid://bc4mtrq20badv" path="res://audio/gamejam22726_FINAL.wav" id="68_ltwek"]
 [ext_resource type="Texture2D" uid="uid://wu1m08kp5sbv" path="res://sprites/bg_sky.png" id="68_u0n8q"]
+[ext_resource type="AudioStream" uid="uid://cbytu8uwl3xwr" path="res://audio/3 SONG STITCH.wav" id="70_om2me"]
 [ext_resource type="Texture2D" uid="uid://2mdvuafr4wi6" path="res://sprites/beat_marker.png" id="71_ltwek"]
 [ext_resource type="Script" uid="uid://dicjnwysglnyu" path="res://scripts/rhythm_pulser_3d.gd" id="71_u5upv"]
 [ext_resource type="Script" uid="uid://bi0vwmyfkqmgv" path="res://scripts/beat_bar.gd" id="71_vry8j"]
@@ -396,7 +396,7 @@ render_priority = -20
 texture = ExtResource("68_u0n8q")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/Camera3D" unique_id=1737419508]
-stream = ExtResource("68_ltwek")
+stream = ExtResource("70_om2me")
 autoplay = true
 
 [node name="PunchMiddleHitbox" type="StaticBody3D" parent="Player" unique_id=1620630954]
