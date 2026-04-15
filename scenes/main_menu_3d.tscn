@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://2yvq6yiiep7y" path="res://scenes/main_menu.tscn" id="1_6llvq"]
 [ext_resource type="Script" uid="uid://gq603hhtb8ch" path="res://scripts/main_menu_camera.gd" id="1_n4olr"]
+[ext_resource type="Script" uid="uid://drsu0ah46bes7" path="res://scripts/main_menu_3d.gd" id="1_vyhg1"]
 [ext_resource type="AudioStream" uid="uid://b2011f8xlyixj" path="res://audio/STUCK_IN_A_LOOP_TITLE.wav" id="2_hdukv"]
 [ext_resource type="Script" uid="uid://d1jnlhang6akk" path="res://scripts/rotate_towards_mouse.gd" id="2_qm0ip"]
 
@@ -35,6 +36,7 @@ size = Vector2(1, 0.6)
 size = Vector3(1, 0.6, 0.001)
 
 [node name="MainMenu3D" type="Node3D" unique_id=2075189576]
+script = ExtResource("1_vyhg1")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1925150922 node_paths=PackedStringArray("ui_viewport", "ui_object")]
 transform = Transform3D(1, 0, 0, 0, 0.9995027, 0.031532872, 0, -0.031532872, 0.9995027, 0, 0.04047303, 0.53772604)
