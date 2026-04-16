@@ -1,11 +1,9 @@
 class_name DefeatedDog
-extends Node3D
+extends CharacterBody3D
 
 @export var time_until_despawn: float = 2.0
 
 @onready var sprite_3d: Sprite3D = $Sprite3D
-
-var velocity: Vector3
 
 func spawn() -> void:
 	sprite_3d.modulate = Color.WHITE
@@ -14,6 +12,6 @@ func spawn() -> void:
 	await get_tree().create_timer(time_until_despawn).timeout
 	queue_free()
 	
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	velocity.y += 10.0 * delta
-	global_position += velocity * delta
+	move_and_slide()

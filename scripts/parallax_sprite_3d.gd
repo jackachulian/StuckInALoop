@@ -6,19 +6,18 @@ extends Sprite3D
 
 var start_pos
 var camera_start_pos
-@export var create_children: bool = false
+@export var pad_children_count: int = 0
 
 func _ready() -> void:
-	if not create_children: return
 	
 	start_pos = global_position
 	camera_start_pos = camera.global_position
 	
-	for i in range(-4, 4):
+	for i in range(-pad_children_count, pad_children_count):
 		if i == 0: continue
 		
 		var size := get_sprite3d_world_size()
-		create_children = false
+		pad_children_count = 0
 		var new: Sprite3D = duplicate()
 		get_parent().add_child.call_deferred(new)
 		var child_pos = global_position

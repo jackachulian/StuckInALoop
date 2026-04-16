@@ -3,7 +3,7 @@ extends Node
 
 @export var beats_per_minute: float = 170
 
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = $"../Player/Camera3D/AudioStreamPlayer3D"
+@export var music_player: AudioStreamPlayer3D
 
 var current_beat: float
 var last_signaled_beat: int
@@ -18,8 +18,8 @@ func _ready() -> void:
 	beats_per_second = beats_per_minute / 60.0
 	current_beat = ((OptionsManager.beat_offset_milliseconds / 1000.0) * beats_per_second) * -1
 	last_signaled_beat = floor(current_beat)
-	audio_stream_player_3d.play()
-	last_process_playback_pos = audio_stream_player_3d.get_playback_position()
+	music_player.play()
+	last_process_playback_pos = music_player.get_playback_position()
 	
 enum HitEffectiveness {
 	Miss,
@@ -53,7 +53,7 @@ func consume_beat() -> HitEffectiveness:
 	return effectiveness
 	
 func _process(delta: float) -> void:
-	var playback_pos = audio_stream_player_3d.get_playback_position()
+	var playback_pos = music_player.get_playback_position()
 	current_beat += beats_per_second * (playback_pos - last_process_playback_pos)
 	last_process_playback_pos = playback_pos
 	

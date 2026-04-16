@@ -9,8 +9,8 @@ var current_tween: Tween
 func _ready() -> void:
 	start_fov = fov
 
-func rhythm_hit_camera_effect(effectiveness: RhythmManager.HitEffectiveness):
-	var strength = eff_strengths[effectiveness]
+func rhythm_hit_camera_effect(effectiveness: RhythmManager.HitEffectiveness, strength_mult: float = 1.0):
+	var strength = eff_strengths[effectiveness] * strength_mult
 	
 	fov = start_fov - 2.25 * strength
 	rotation_degrees = Vector3(0.0, 0.0, randf_range(-8.0, 8.0) * strength)

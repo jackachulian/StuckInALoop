@@ -34,8 +34,11 @@ func _on_area_entered(area: Area3D):
 		if area.has_method("take_knockback"):
 			area.take_knockback(current_knockback)
 		area.take_damage(damage)
-		if attacker_entity and attacker_entity.get("rhythm_camera") != null and attacker_entity.get("hit_effectiveness") != null:
-			attacker_entity.rhythm_camera.rhythm_hit_camera_effect(attacker_entity.hit_effectiveness)
+		if attacker_entity:
+			if attacker_entity.get("rhythm_camera") != null and attacker_entity.get("hit_effectiveness") != null:
+				attacker_entity.rhythm_camera.rhythm_hit_camera_effect(attacker_entity.hit_effectiveness)
+			#if attacker_entity.get("hit_sound_player") is AudioStreamPlayer3D:
+				#attacker_entity.hit_sound_player.play()
 
 func hit(knockback: Vector3, damage: int = 1, duration: float = 0.05):
 	can_hit = true

@@ -21,6 +21,8 @@ extends CharacterBody3D
 @onready var punch_high_hitbox: Hitbox = $FlipParent/PunchHighHitbox
 @onready var effectiveness_label: RhythmEffectivenessText = $EffectivenessLabel
 @onready var rhythm_camera: RhythmCamera = $Camera3D
+@onready var hit_sound_player: AudioStreamPlayer3D = $Camera3D/HitSoundPlayer
+
 
 # Miss, Okay, Good, Great, Perfect
 
@@ -84,6 +86,8 @@ func _physics_process(delta: float) -> void:
 			effectiveness_label.show_effectiveness(hit_effectiveness)
 			#rhythm_camera.rhythm_hit_camera_effect(hit_effectiveness)
 			if hit_effectiveness != RhythmManager.HitEffectiveness.Miss:
+				hit_sound_player.play()
+				rhythm_camera.rhythm_hit_camera_effect(hit_effectiveness, 0.33)
 				if Input.is_action_pressed("ui_up"):
 					animated_sprite_3d.play("punch_high")
 					animated_sprite_3d.frame = 0
