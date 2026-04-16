@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://d2m1rq0ucb3e0" path="res://scripts/main_menu_button.gd" id="8_jk1qb"]
 [ext_resource type="Script" uid="uid://de5stmbroblb" path="res://scripts/options.gd" id="9_flqon"]
 [ext_resource type="StyleBox" uid="uid://5jl2qng8on1r" path="res://style/slider.tres" id="9_lgwnu"]
+[ext_resource type="Script" uid="uid://5b7raoaovuri" path="res://scripts/options_option.gd" id="10_7b55j"]
 [ext_resource type="StyleBox" uid="uid://bi7xy1rp08c17" path="res://style/grabber_area.tres" id="10_flqon"]
+[ext_resource type="StyleBox" uid="uid://dl70l3kexqq2x" path="res://style/option_button_focused.tres" id="11_5pajh"]
 [ext_resource type="StyleBox" uid="uid://dvy21afyguqqw" path="res://style/grabber_area_highlight.tres" id="11_rcqid"]
 [ext_resource type="LabelSettings" uid="uid://okttlvi03oa4" path="res://style/label_normal.tres" id="13_1ajci"]
 [ext_resource type="Script" uid="uid://bs7rp2xhlixr" path="res://scripts/timing_offset_label.gd" id="13_rcqid"]
@@ -97,6 +99,10 @@ stacked_shadow_count = 1
 stacked_shadow_0/offset = Vector2(-16, 8)
 stacked_shadow_0/color = Color(0, 0, 0, 0.10980392)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b55j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pajh"]
+
 [sub_resource type="FontVariation" id="FontVariation_1ajci"]
 base_font = ExtResource("1_wu84c")
 
@@ -110,6 +116,22 @@ base_font = ExtResource("1_wu84c")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5pajh"]
 font = SubResource("FontVariation_7b55j")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7ex8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8gd2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hstxw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8egab"]
+
+[sub_resource type="FontVariation" id="FontVariation_lgwnu"]
+base_font = ExtResource("1_wu84c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8gd2"]
+font = SubResource("FontVariation_lgwnu")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
@@ -136,9 +158,6 @@ base_font = ExtResource("1_wu84c")
 font = SubResource("FontVariation_8egab")
 font_size = 20
 font_color = Color(0.25490198, 0.59607846, 1, 1)
-
-[sub_resource type="FontVariation" id="FontVariation_lgwnu"]
-base_font = ExtResource("1_wu84c")
 
 [sub_resource type="LabelSettings" id="LabelSettings_flqon"]
 font = SubResource("FontVariation_lgwnu")
@@ -300,21 +319,31 @@ layout_mode = 2
 
 [node name="PlayButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=783315531 instance=ExtResource("4_oa1go")]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
 
 [node name="CreditsButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=936077062 instance=ExtResource("4_oa1go")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
 
 [node name="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/CreditsButton" index="0" unique_id=2005296554]
 text = "CREDITS"
 
 [node name="OptionsButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=1258108129 instance=ExtResource("4_oa1go")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
 
 [node name="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/OptionsButton" index="0" unique_id=2005296554]
 text = "OPTIONS"
 
 [node name="QuitButton" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=479334128 instance=ExtResource("4_oa1go")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_next = NodePath("../PlayButton")
 
 [node name="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/QuitButton" index="0" unique_id=2005296554]
 text = "QUIT"
@@ -416,7 +445,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionsContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1719229809]
-visible = false
 layout_mode = 0
 offset_right = 1104.0
 offset_bottom = 548.0
@@ -448,18 +476,17 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MusicVolume" type="Control" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=66099258]
+[node name="MusicVolume" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1236327288]
 custom_minimum_size = Vector2(550, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7b55j")
+script = ExtResource("10_7b55j")
+normal_style = SubResource("StyleBoxEmpty_5pajh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/MusicVolume" unique_id=480479094]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/MusicVolume/HBoxContainer" unique_id=1532153969]
@@ -489,18 +516,17 @@ text = "75%"
 label_settings = SubResource("LabelSettings_5pajh")
 vertical_alignment = 1
 
-[node name="SFXVolume" type="Control" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1232513398]
+[node name="SFXVolume" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=410034614]
 custom_minimum_size = Vector2(550, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_j7ex8")
+script = ExtResource("10_7b55j")
+normal_style = SubResource("StyleBoxEmpty_a8gd2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/SFXVolume" unique_id=1314959004]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/SFXVolume/HBoxContainer" unique_id=1993541203]
@@ -530,18 +556,17 @@ text = "75%"
 label_settings = SubResource("LabelSettings_5pajh")
 vertical_alignment = 1
 
-[node name="TimingOffset" type="Control" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=877055860]
+[node name="TimingOffset" type="PanelContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=831491828]
 custom_minimum_size = Vector2(550, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hstxw")
+script = ExtResource("10_7b55j")
+normal_style = SubResource("StyleBoxEmpty_8egab")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset" unique_id=1374605453]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer" unique_id=1755455692]
@@ -553,13 +578,37 @@ label_settings = SubResource("LabelSettings_7b55j")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="DecreaseButton" type="Button" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer" unique_id=392952414]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xc1rk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sl1c")
+theme_override_styles/hover = ExtResource("11_5pajh")
+theme_override_styles/focus = ExtResource("7_tbmy8")
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer/DecreaseButton" unique_id=1634608578]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<"
+label_settings = SubResource("LabelSettings_a8gd2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Percent" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer" unique_id=600902024]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 focus_mode = 1
-text = "<  100 MS  >"
+text = "100 MS"
 label_settings = ExtResource("13_1ajci")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -567,6 +616,30 @@ script = ExtResource("13_rcqid")
 normal_label_settings = SubResource("LabelSettings_j7ex8")
 hover_label_settings = SubResource("LabelSettings_hstxw")
 focus_label_settings = SubResource("LabelSettings_gw5y6")
+
+[node name="IncreaseButton" type="Button" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer" unique_id=1188669874]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xc1rk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7sl1c")
+theme_override_styles/hover = ExtResource("11_5pajh")
+theme_override_styles/focus = ExtResource("7_tbmy8")
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer/IncreaseButton" unique_id=1475332425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = ">"
+label_settings = SubResource("LabelSettings_a8gd2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer" unique_id=237611002]
 custom_minimum_size = Vector2(300, 100)
@@ -624,7 +697,10 @@ uppercase = true
 [connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/PlayButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/CreditsContainer/PanelContainer/VBoxContainer/BackButton" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer/DecreaseButton" to="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer" method="_on_offset_decrease_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/VBoxContainer/TimingOffset/HBoxContainer/IncreaseButton" to="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer" method="_on_offset_increase_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/OptionsContainer/PanelContainer/VBoxContainer/BackButton" to="." method="_on_options_back_pressed"]
 
 [editable path="ColorRect/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/MainMenuContainer/HBoxContainer/PanelContainer2/VBoxContainer/CreditsButton"]

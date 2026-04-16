@@ -12,8 +12,8 @@ func _ready() -> void:
 func rhythm_hit_camera_effect(effectiveness: RhythmManager.HitEffectiveness):
 	var strength = eff_strengths[effectiveness]
 	
-	fov = start_fov - 1.25 * strength
-	rotation_degrees = Vector3(0.0, 0.0, randf_range(-3.0, 3.0) * strength)
+	fov = start_fov - 2.25 * strength
+	rotation_degrees = Vector3(0.0, 0.0, randf_range(-8.0, 8.0) * strength)
 	
 	if current_tween:
 		current_tween.kill()

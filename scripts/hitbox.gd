@@ -26,16 +26,14 @@ func _process(delta: float) -> void:
 		hide()
 
 func _on_area_entered(area: Area3D):
-	print("area entered: ", area)
-	print("attacker: ", attacker_entity)
 	if area == attacker_entity.hurtbox:
 		return
 	
 	if (can_hit or can_always_hit) and area.has_method("take_damage") and area.monitorable:
 		can_hit = false
-		area.take_damage(damage)
 		if area.has_method("take_knockback"):
 			area.take_knockback(current_knockback)
+		area.take_damage(damage)
 		if attacker_entity and attacker_entity.get("rhythm_camera") != null and attacker_entity.get("hit_effectiveness") != null:
 			attacker_entity.rhythm_camera.rhythm_hit_camera_effect(attacker_entity.hit_effectiveness)
 

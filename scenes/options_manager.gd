@@ -1,6 +1,8 @@
 class_name OptionsManager
-extends Node
 
-var beat_offset_milliseconds: float = 100
+static var music_volume: float = 70
+static var sfx_volume: float = 70
 
-var input_delay_milliseconds: float = 0
+static var beat_offset_milliseconds: int = 150
+
+static var input_delay_milliseconds: int = 0

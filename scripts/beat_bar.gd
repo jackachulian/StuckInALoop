@@ -1,9 +1,7 @@
 class_name BeatBar
 extends ColorRect
 
-@export var options_manager: OptionsManager
 @export var rhythm_manager: RhythmManager
-
 
 @export var beat_lookahead: float = 2.5
 @export var marker_scene: PackedScene

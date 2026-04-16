@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://1e1mhswlan6e"]
+
+[ext_resource type="Script" uid="uid://d3oscxcrsmvs6" path="res://scripts/defeated_dog.gd" id="1_0iauu"]
+[ext_resource type="Texture2D" uid="uid://hhxfx02a1asv" path="res://sprites/dog/spr_gamejam_tearyer_defeat.png" id="2_3lbci"]
+
+[node name="DefeatedDog" type="Node3D" unique_id=636148768]
+script = ExtResource("1_0iauu")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1360314259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18217182, 1.2334569, 0)
+pixel_size = 0.02
+texture = ExtResource("2_3lbci")

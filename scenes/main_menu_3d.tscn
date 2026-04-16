@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://drsu0ah46bes7" path="res://scripts/main_menu_3d.gd" id="1_vyhg1"]
 [ext_resource type="AudioStream" uid="uid://b2011f8xlyixj" path="res://audio/STUCK_IN_A_LOOP_TITLE.wav" id="2_hdukv"]
 [ext_resource type="Script" uid="uid://d1jnlhang6akk" path="res://scripts/rotate_towards_mouse.gd" id="2_qm0ip"]
+[ext_resource type="AudioStream" uid="uid://curdr08y6a0rt" path="res://audio/UI/Menu Select Confirm.wav" id="4_hfcot"]
 [ext_resource type="PackedScene" uid="uid://dp8lm0i3k1rno" path="res://scenes/scene_transition.tscn" id="6_gu81k"]
 
 [sub_resource type="Environment" id="Environment_qm0ip"]
@@ -47,9 +48,11 @@ ui_viewport = NodePath("../MainMenuScreenLayer/SubViewport")
 ui_object = NodePath("../Ipod/IpodMesh/ScreenStaticBody3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1085058927]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22979522, -0.016506108, -0.015734196)
 stream = ExtResource("2_hdukv")
 autoplay = true
+
+[node name="ConfirmPlayer" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1276591446]
+stream = ExtResource("4_hfcot")
 
 [node name="Ipod" type="Node3D" parent="." unique_id=1203281519]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -80,7 +83,8 @@ size = Vector2i(2880, 1620)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
 
-[node name="MainMenu" parent="MainMenuScreenLayer/SubViewport" unique_id=72014888 node_paths=PackedStringArray("scene_transition") instance=ExtResource("1_6llvq")]
+[node name="MainMenu" parent="MainMenuScreenLayer/SubViewport" unique_id=72014888 node_paths=PackedStringArray("scene_transition", "confirm_sound_player") instance=ExtResource("1_6llvq")]
 scene_transition = NodePath("../../../SceneTransition")
+confirm_sound_player = NodePath("../../../Camera3D/ConfirmPlayer")
 
 [node name="SceneTransition" parent="." unique_id=189451907 instance=ExtResource("6_gu81k")]

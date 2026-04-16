@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcvayedylbcne"
+path="res://.godot/imported/YOU WIN SONG.wav-05380d85ca25c9249f2270591b7653ed.sample"
+
+[deps]
+
+source_file="res://audio/YOU WIN SONG.wav"
+dest_files=["res://.godot/imported/YOU WIN SONG.wav-05380d85ca25c9249f2270591b7653ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

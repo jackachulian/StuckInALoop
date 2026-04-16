@@ -13,6 +13,7 @@ extends CharacterBody3D
 @export var gravity = -80
 @export var hurt_attack_delay = 0.25
 
+@export var defeated_dog: PackedScene
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $FlipParent/AnimatedSprite3D
 @onready var flip_parent: Node3D = $FlipParent
@@ -98,6 +99,12 @@ func take_damage(damage: int):
 	health -= damage
 	hurt_timer = 0.0
 	if (health <= 0):
+		var defeated_dog_instance = defeated_dog.instantiate() as DefeatedDog
+		get_parent().add_child(defeated_dog_instance)
+		defeated_dog_instance.spawn()
+		defeated_dog_instance.global_position = global_position
+		defeated_dog_instance.velocity = velocity * 0.5
+		
 		queue_free()
 	else:
 		flash_damage()

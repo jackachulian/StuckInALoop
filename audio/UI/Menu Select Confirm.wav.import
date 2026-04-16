@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://curdr08y6a0rt"
+path="res://.godot/imported/Menu Select Confirm.wav-d261532ed06eb852f52d1b0f9109c53e.sample"
+
+[deps]
+
+source_file="res://audio/UI/Menu Select Confirm.wav"
+dest_files=["res://.godot/imported/Menu Select Confirm.wav-d261532ed06eb852f52d1b0f9109c53e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
