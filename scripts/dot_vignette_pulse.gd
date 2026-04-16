@@ -1,12 +1,12 @@
 extends ColorRect
 
 @export var rhythm_manager: RhythmManager
-
+@export var player: Player
 
 
 func _ready() -> void:
 	rhythm_manager.beat.connect(_on_beat)
 	
 func _on_beat():
-	material.set("shader_parameter/dots_width", 2.316)
+	material.set("shader_parameter/dots_width", 2.426 if player.health <= 1 else 2.336)
 	create_tween().tween_property(material, "shader_parameter/dots_width", 2.246, 0.125)

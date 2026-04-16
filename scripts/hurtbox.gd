@@ -10,5 +10,6 @@ func take_damage(damage: int):
 	entity.take_damage(damage)
 
 func take_knockback(knockback: Vector3):
-	entity.velocity = knockback
+	if (entity.get("health") is int and entity.health > 0):
+		entity.velocity = knockback
 	

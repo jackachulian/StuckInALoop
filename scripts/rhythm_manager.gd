@@ -42,7 +42,7 @@ func consume_beat() -> HitEffectiveness:
 	var closest_beat_offset_seconds: float = closest_beat_offset / beats_per_second
 	var next_beat_offset_seconds: float = (closest_beat+1 - current_beat) / beats_per_second
 	
-	var effectiveness_max_diffs := [999, 0.150, 0.125, 0.100, 0.070]
+	var effectiveness_max_diffs := [999, 0.130, 0.115, 0.095, 0.070]
 	var effectiveness := HitEffectiveness.Miss
 	
 	for i in range(1, len(effectiveness_max_diffs)):

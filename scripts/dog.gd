@@ -73,6 +73,10 @@ func _physics_process(delta: float) -> void:
 	if can_move():
 		var direction: float = 0
 	
+		if not player_node:
+			velocity.x = 0;
+			return;
+	
 		if player_node.position.x < position.x - 0.05:
 			direction = -1
 			flip_parent.scale.x = -1.0

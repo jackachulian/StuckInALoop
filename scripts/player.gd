@@ -1,10 +1,11 @@
+class_name Player
 extends CharacterBody3D
 
 # ==== PLAYER
 
 @export var rhythm_manager: RhythmManager
 @export var hurtbox: Hurtbox
-@export var health: int = 4
+@export var health: int = 3
 @export var hit_invincibility_time: float = 1.0
 @export var speed = 18.0
 @export var slide_speed = 22.5
@@ -12,6 +13,7 @@ extends CharacterBody3D
 @export var gravity = -9.8
 @export var coyote_time := 0.1
 @export var jump_buffer_time := 0.1
+@export var scene_transition: SceneTransition
 
 @onready var animated_sprite_3d: AnimatedSprite3D = $FlipParent/AnimatedSprite3D
 @onready var flip_parent: Node3D = $FlipParent
@@ -23,6 +25,7 @@ extends CharacterBody3D
 @onready var rhythm_camera: RhythmCamera = $Camera3D
 @onready var hit_sound_player: AudioStreamPlayer3D = $Camera3D/HitSoundPlayer
 
+signal health_changed
 
 # Miss, Okay, Good, Great, Perfect
 
@@ -48,9 +51,9 @@ func _on_frame_changed():
 	if animated_sprite_3d.animation == "punch_middle" and animated_sprite_3d.frame == 1:
 		punch_middle_hitbox.hit(Vector3(hit_direction*8.0, 5.0, 0.0)*knockback_mult, 2 if perfect else 1)
 	elif animated_sprite_3d.animation == "punch_high" and animated_sprite_3d.frame == 1:
-		punch_high_hitbox.hit(Vector3(hit_direction*8.0, 18.0, 0.0)*knockback_mult, 1)
+		punch_high_hitbox.hit(Vector3(hit_direction*12.5, 22.5, 0.0)*knockback_mult, 1)
 	elif animated_sprite_3d.animation == "punch_low" and animated_sprite_3d.frame == 1:
-		punch_low_hitbox.hit(Vector3(hit_direction*22.5, 5.0, 0.0)*knockback_mult, 1)
+		punch_low_hitbox.hit(Vector3(hit_direction*17.5, 7.5, 0.0)*knockback_mult, 1, 999)
 	
 func _on_anim_finished() -> void:
 	# Attack finish
@@ -79,6 +82,12 @@ func _physics_process(delta: float) -> void:
 			# Once HL finishes the jump anim
 			#animated_sprite_3d.play("fall") 
 		
+	if health <= 0:
+		if is_on_floor():
+			velocity.x = 0
+		move_and_slide()
+		return
+		
 	# Attack
 	if Input.is_action_just_pressed("punch"):
 		# Consume the beat even if currently in an action
@@ -99,6 +108,7 @@ func _physics_process(delta: float) -> void:
 					animated_sprite_3d.frame = 0
 					var dash_strength: float = [0.0, 0.55, 0.75, 0.9, 1.00][hit_effectiveness]
 					velocity.x = (1 if facing_right else -1) * slide_speed * dash_strength
+					velocity.y -= 15.0 * dash_strength
 				else:
 					animated_sprite_3d.play("punch_middle")
 					animated_sprite_3d.frame = 0
@@ -178,9 +188,12 @@ func is_hurt() -> bool:
 func take_damage(damage: int):
 	print(name, " took ", damage, " damage")
 	health -= damage
+	health_changed.emit()
 	if (health <= 0):
-		#queue_free()
-		print("death")
+		animated_sprite_3d.animation = "hurt"
+		await animated_sprite_3d.animation_finished
+		hide()
+		scene_transition.transition_to_scene("res://scenes/level.tscn")
 	else:
 		hit_invincibility_timer = hit_invincibility_time
 		animated_sprite_3d.animation = "hurt"
