@@ -13,38 +13,47 @@ extends CharacterBody3D
 @export var gravity = -80
 @export var hurt_attack_delay = 0.25
 
+
 @onready var animated_sprite_3d: AnimatedSprite3D = $FlipParent/AnimatedSprite3D
 @onready var flip_parent: Node3D = $FlipParent
+@onready var dog_hitbox: Hitbox = $DogHitbox
+@onready var hurtbox: Hurtbox = $DogHurtbox
 
 var facing_right: bool = true
 var hurt_timer := 0.0
 
 func _ready() -> void:
-	animated_sprite_3d.animation_finished.connect(_on_anim_finished)
+	#animated_sprite_3d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_3d.frame_changed.connect(_on_frame_changed)
+	#rhythm_manager.beat.connect(_on_beat)
 	play_animation_synced("walk", 2)
+	dog_hitbox.can_always_hit = true
 	hurt_timer = hurt_attack_delay
 	
-func _on_beat():
-	if animated_sprite_3d.animation == "attack_prepare":
-		animated_sprite_3d.animation = "attack"
-		velocity.x = (1 if facing_right else -1) * attack_slide_speed
-		
-	# prepare to attack if player nearby
-	elif animated_sprite_3d.animation == "walk":
-		var distance_from_player = player_node.position.distance_to(position)
-		if (distance_from_player <= attack_distance):
-			animated_sprite_3d.play("attack_prepare")
-			animated_sprite_3d.frame = 0
+#func _on_beat():
+	#if animated_sprite_3d.animation == "attack":
+		#play_animation_synced("walk", 2)
+	#
+	#elif animated_sprite_3d.animation == "attack_prepare":
+		#animated_sprite_3d.animation = "attack"
+		#velocity.x = (1 if facing_right else -1) * attack_slide_speed
+		#
+	## prepare to attack if player nearby
+	#elif animated_sprite_3d.animation == "walk":
+		#var distance_from_player = player_node.position.distance_to(position)
+		#if (distance_from_player <= attack_distance):
+			#animated_sprite_3d.play("attack_prepare")
+			#animated_sprite_3d.frame = 0
+			#velocity.x = 0
 	
 func _on_frame_changed():
 	animated_sprite_3d.material_override.set_shader_parameter("tex", 
 	animated_sprite_3d.sprite_frames.get_frame_texture(animated_sprite_3d.animation, animated_sprite_3d.frame))
 
-func _on_anim_finished() -> void:
-	# Attack finish
-	if animated_sprite_3d.animation == "attack":
-		play_animation_synced("walk", 2)
+#func _on_anim_finished() -> void:
+	## Attack finish
+	#if animated_sprite_3d.animation == "attack":
+		#play_animation_synced("walk", 2)
 	
 func _physics_process(delta: float) -> void:
 	hurt_timer += delta
@@ -54,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 		
 	# Jump on hit wall
-	if is_on_wall():
+	if is_on_wall() and is_on_floor():
 		velocity.y = jump_velocity
 		
 	# Horizontal movement
@@ -71,11 +80,15 @@ func _physics_process(delta: float) -> void:
 			facing_right = true		
 			
 		velocity.x = direction * speed
+		dog_hitbox.hit(Vector3(20.0*direction, 15.0, 0.0), 1, 999999)
+		
+	elif animated_sprite_3d.animation == "attack":
+		velocity.x = move_toward(velocity.x, 0, delta * 10.0)
 		
 	move_and_slide()
 	
 func can_move():
-	return hurt_timer > hurt_attack_delay and not is_in_attack_animation() and is_on_floor()
+	return hurt_timer > hurt_attack_delay and (not is_in_attack_animation()) and is_on_floor()
 	
 func is_in_attack_animation() -> bool:
 	return animated_sprite_3d.animation in ["attack_prepare", "attack"]

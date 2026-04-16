@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://cciteywr71vqp" path="res://scripts/beat_manager.gd" id="4_ppgk2"]
 [ext_resource type="Texture2D" uid="uid://coy3clxl5d8mt" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0002.png" id="5_535f6"]
 [ext_resource type="Texture2D" uid="uid://d1mb4wyu5mryf" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0003.png" id="6_50fbu"]
+[ext_resource type="Texture2D" uid="uid://dwu143kcd2py5" path="res://sprites/PROTAG/500x500/Hurt/spr_gamejam_protag_wildtake_0001.png" id="6_ebg7i"]
 [ext_resource type="Texture2D" uid="uid://dyriyxiy78x6q" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0004.png" id="7_0fmhk"]
+[ext_resource type="Texture2D" uid="uid://dsb7u6xuhpll4" path="res://sprites/PROTAG/500x500/Hurt/spr_gamejam_protag_wildtake_0002.png" id="7_iobf8"]
 [ext_resource type="Texture2D" uid="uid://d1ve3r7cski2u" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0005.png" id="8_iafhg"]
+[ext_resource type="Texture2D" uid="uid://cq17v0nw3ece0" path="res://sprites/PROTAG/500x500/Hurt/spr_gamejam_protag_wildtake_0003.png" id="8_kbk4x"]
 [ext_resource type="Texture2D" uid="uid://ly6hnlx8jukr" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0006.png" id="9_cr74b"]
 [ext_resource type="Texture2D" uid="uid://bp80wvmaq7m57" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0007.png" id="10_uhfbm"]
 [ext_resource type="Texture2D" uid="uid://dbpyskkmywt17" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0008.png" id="11_lqb7q"]
@@ -67,21 +70,18 @@
 [ext_resource type="Texture2D" uid="uid://bm344gjs1r20l" path="res://sprites/PROTAG/500x500/Punch/spr_gamejam_protag_punchMIDDLE_0012.png" id="58_kwu62"]
 [ext_resource type="Texture2D" uid="uid://bnas44u30s3p3" path="res://sprites/PROTAG/500x500/Punch/spr_gamejam_protag_punchMIDDLE_0013.png" id="59_y73rr"]
 [ext_resource type="Texture2D" uid="uid://b872y42wtyvlr" path="res://sprites/bg_buildings.png" id="67_jydfl"]
+[ext_resource type="Script" uid="uid://baql2766leu8u" path="res://scenes/rhythm_camera.gd" id="68_1sbqr"]
 [ext_resource type="Script" uid="uid://bf0w1qgs5me62" path="res://scripts/parallax_sprite_3d.gd" id="68_d5irf"]
 [ext_resource type="Texture2D" uid="uid://wu1m08kp5sbv" path="res://sprites/bg_sky.png" id="68_u0n8q"]
-[ext_resource type="AudioStream" uid="uid://cbytu8uwl3xwr" path="res://audio/3 SONG STITCH.wav" id="70_om2me"]
-[ext_resource type="Texture2D" uid="uid://d0ssd1jkrmrfa" path="res://sprites/dog/spr_gamejam_tearyer1.png" id="71_clbla"]
-[ext_resource type="Script" uid="uid://xsjcf0hc73bt" path="res://scripts/dog.gd" id="71_ebg7i"]
+[ext_resource type="AudioStream" uid="uid://bc4mtrq20badv" path="res://audio/gamejam22726_FINAL.wav" id="70_1sbqr"]
+[ext_resource type="FontFile" uid="uid://g2xtgddux3yq" path="res://fonts/Boldonse-Regular.ttf" id="70_kbk4x"]
 [ext_resource type="Script" uid="uid://brmhru3b2n1v4" path="res://scripts/hitbox.gd" id="71_iobf8"]
-[ext_resource type="Shader" uid="uid://dbe5dm5iyo2n" path="res://materials/dog.gdshader" id="71_kbk4x"]
 [ext_resource type="Texture2D" uid="uid://2mdvuafr4wi6" path="res://sprites/beat_marker.png" id="71_ltwek"]
+[ext_resource type="Script" uid="uid://cn7rk8422kfxp" path="res://scripts/rhythm_effectiveness_text.gd" id="71_p1qlp"]
 [ext_resource type="Script" uid="uid://dicjnwysglnyu" path="res://scripts/rhythm_pulser_3d.gd" id="71_u5upv"]
 [ext_resource type="Script" uid="uid://bi0vwmyfkqmgv" path="res://scripts/beat_bar.gd" id="71_vry8j"]
-[ext_resource type="Texture2D" uid="uid://b3l3xvw44vnx1" path="res://sprites/dog/spr_gamejam_tearyer2.png" id="72_ebg7i"]
 [ext_resource type="PackedScene" uid="uid://hjvgbpi8uwmu" path="res://scenes/beat_marker.tscn" id="72_vry8j"]
-[ext_resource type="Texture2D" uid="uid://dy7shmqlmy8xh" path="res://sprites/dog/spr_gamejam_tearyer3.png" id="73_iobf8"]
-[ext_resource type="Texture2D" uid="uid://ci5mn7njbf8c2" path="res://sprites/dog/spr_gamejam_tearyer4.png" id="74_kbk4x"]
-[ext_resource type="Texture2D" uid="uid://beg5i28qxgkax" path="res://sprites/dog/spr_gamejam_tearyer5.png" id="75_p1qlp"]
+[ext_resource type="PackedScene" uid="uid://byeqdow277rdc" path="res://scenes/dog.tscn" id="73_7kuto"]
 [ext_resource type="Script" uid="uid://ucjnpwwr5ghd" path="res://scripts/rhythm_pulser_control.gd" id="76_om2me"]
 [ext_resource type="PackedScene" uid="uid://dp8lm0i3k1rno" path="res://scenes/scene_transition.tscn" id="76_s1acf"]
 [ext_resource type="Script" uid="uid://cl58uijybdsf7" path="res://scripts/hurtbox.gd" id="78_kbk4x"]
@@ -91,7 +91,7 @@ friction = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c1pbi"]
 radius = 1.1269531
-height = 3.8129883
+height = 3.923584
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idnaj"]
 
@@ -102,6 +102,29 @@ height = 2.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smfc2"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ebg7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iobf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kbk4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ebg7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iobf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kbk4x")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("27_4h8xp")
@@ -226,7 +249,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch_high",
-"speed": 30.0
+"speed": 40.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,7 +269,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch_low",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -287,7 +310,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch_middle",
-"speed": 30.0
+"speed": 40.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -332,66 +355,15 @@ radius = 1.3106067
 radius = 1.4204102
 height = 3.7308655
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ebg7i"]
-radius = 1.7172852
+[sub_resource type="Environment" id="Environment_p1qlp"]
+sdfgi_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1qlp"]
-render_priority = 0
-shader = ExtResource("71_kbk4x")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_strength = 0.0
-shader_parameter/tex = ExtResource("71_clbla")
+[sub_resource type="FontVariation" id="FontVariation_p1qlp"]
+base_font = ExtResource("70_kbk4x")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1sbqr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("75_p1qlp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("74_kbk4x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("73_iobf8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("72_ebg7i")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("71_clbla")
-}],
-"loop": true,
-"name": &"attack_prepare",
-"speed": 1.5
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("71_clbla")
-}, {
-"duration": 1.0,
-"texture": ExtResource("72_ebg7i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("73_iobf8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("74_kbk4x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("75_p1qlp")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 8.0
-}]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_iobf8"]
-radius = 2.3850038
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iobf8"]
+radius = 0.9121094
+height = 2.7485352
 
 [node name="Level" type="Node3D" unique_id=1628288231]
 
@@ -413,7 +385,7 @@ data = {
 "cells": PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65532, 65529, 0, 3, 0, 0, 65531, 65529, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65531, 65533, 0, 65531, 65532, 0, 65531, 65531, 0, 65531, 65530, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 19, 65535, 0, 19, 65534, 0, 20, 65534, 0, 20, 65535, 0, 20, 0, 0, 23, 0, 0, 23, 65535, 0, 23, 65534, 0, 24, 65534, 0, 24, 65535, 0, 24, 0, 0, 25, 0, 0, 25, 65535, 0, 26, 65535, 0, 26, 0, 0, 27, 0, 0, 27, 65535, 0, 28, 65535, 0, 28, 0, 0, 29, 65535, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 32, 65535, 0, 31, 65535, 0, 30, 65535, 0, 33, 65535, 0, 33, 0, 0, 34, 0, 0, 34, 65535, 0, 34, 65534, 0, 35, 65533, 0, 35, 65534, 0, 35, 65535, 0, 35, 0, 0, 34, 65533, 0, 36, 65533, 0, 37, 65533, 0, 38, 65533, 0, 39, 65533, 0, 40, 65533, 0, 40, 65534, 0, 40, 65535, 0, 39, 65535, 0, 39, 0, 0, 38, 0, 0, 37, 0, 0, 36, 0, 0, 36, 65535, 0, 36, 65534, 0, 37, 65534, 0, 38, 65534, 0, 39, 65534, 0, 38, 65535, 0, 37, 65535, 0, 40, 0, 0, 46, 0, 0, 46, 65535, 0, 47, 65535, 0, 48, 65535, 0, 49, 65535, 0, 50, 65535, 0, 51, 65535, 0, 51, 0, 0, 50, 0, 0, 49, 0, 0, 48, 0, 0, 47, 0, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 20, 2, 0, 20, 3, 0, 19, 3, 0, 18, 3, 0, 17, 3, 0, 16, 3, 0, 15, 3, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 14, 3, 0, 13, 3, 0, 12, 3, 0, 11, 2, 0, 10, 2, 0, 9, 2, 0, 8, 2, 0, 7, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 8, 3, 0, 7, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 6, 3, 0, 5, 3, 0, 4, 3, 0, 3, 3, 0, 2, 3, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 65534, 3, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65532, 2, 0, 65531, 2, 0, 65531, 3, 0, 6, 2, 0, 5, 2, 0, 4, 2, 0, 65532, 3, 0, 65533, 3, 0, 65530, 3, 0, 65530, 2, 0, 65530, 1, 0, 65530, 0, 0, 65530, 65535, 0, 65530, 65534, 0, 65530, 65532, 0, 65530, 65531, 0, 65530, 65533, 0, 65530, 65530, 0, 65530, 65529, 0, 65529, 65529, 0, 65528, 65529, 0, 65527, 65529, 0, 65527, 65530, 0, 65529, 65531, 0, 65528, 65530, 0, 65529, 65530, 0, 65529, 65532, 0, 65529, 65533, 0, 65529, 65534, 0, 65529, 65535, 0, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65528, 3, 0, 65528, 2, 0, 65527, 1, 0, 65527, 0, 0, 65527, 65535, 0, 65527, 65534, 0, 65527, 65533, 0, 65528, 65533, 0, 65528, 65532, 0, 65528, 65531, 0, 65527, 65531, 0, 65527, 65532, 0, 65528, 65534, 0, 65528, 65535, 0, 65528, 0, 0, 65528, 1, 0, 65527, 3, 0, 65527, 2, 0, 21, 0, 0, 22, 0, 0, 46, 1, 0, 45, 1, 0, 44, 1, 0, 43, 1, 0, 42, 1, 0, 41, 1, 0, 40, 1, 0, 52, 65535, 0, 53, 65535, 0, 54, 65535, 0, 55, 65535, 0, 56, 0, 0, 57, 0, 0, 58, 0, 0, 59, 0, 0, 60, 0, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 0, 0, 65, 0, 0, 58, 65535, 0, 57, 65535, 0, 56, 65535, 0, 52, 0, 0, 53, 0, 0, 54, 0, 0, 55, 0, 0, 66, 0, 0, 65, 65535, 0, 64, 65535, 0, 63, 65535, 0, 62, 65535, 0, 61, 65535, 0, 60, 65535, 0, 59, 65535, 0, 66, 65535, 0, 67, 65535, 0, 68, 65535, 0, 69, 65535, 0, 70, 65535, 0, 71, 0, 0, 72, 0, 0, 73, 0, 0, 74, 0, 0, 75, 0, 0, 76, 0, 0, 70, 0, 0, 69, 0, 0, 68, 0, 0, 67, 0, 0, 73, 65535, 0, 74, 65535, 0, 75, 65535, 0, 76, 65535, 0, 72, 65535, 0, 71, 65535, 0, 77, 65535, 0, 78, 65535, 0, 79, 65535, 0, 80, 65535, 0, 81, 65535, 0, 82, 65535, 0, 83, 65535, 0, 84, 65535, 0, 85, 65535, 0, 86, 65535, 0, 87, 65535, 0, 88, 65535, 0, 89, 65535, 0, 90, 65535, 0, 91, 65535, 0, 92, 65535, 0, 93, 65535, 0, 94, 65535, 0, 94, 0, 0, 93, 0, 0, 92, 0, 0, 91, 0, 0, 90, 0, 0, 89, 0, 0, 88, 0, 0, 87, 0, 0, 86, 0, 0, 85, 0, 0, 84, 0, 0, 83, 0, 0, 82, 0, 0, 81, 0, 0, 80, 0, 0, 79, 0, 0, 78, 0, 0, 77, 0, 0)
 }
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=957345421 node_paths=PackedStringArray("rhythm_manager")]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=957345421 node_paths=PackedStringArray("rhythm_manager", "hurtbox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2249827, 0.47963297)
 collision_layer = 2
 axis_lock_linear_z = true
@@ -424,12 +396,13 @@ floor_block_on_wall = false
 floor_snap_length = 0.2
 script = ExtResource("2_mx8sn")
 rhythm_manager = NodePath("../RhythmManager")
+hurtbox = NodePath("Hurtbox")
 speed = 20.0
 jump_velocity = 33.0
-gravity = -85.0
+gravity = -100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=370398129]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79418945, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7388916, 0)
 shape = SubResource("CapsuleShape3D_c1pbi")
 
 [node name="FlipParent" type="Node3D" parent="Player" unique_id=1245374944]
@@ -442,36 +415,40 @@ mesh = SubResource("SphereMesh_vwqyp")
 skeleton = NodePath("../..")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player/FlipParent" unique_id=1491621810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535, 0)
 alpha_cut = 2
+render_priority = 2
 sprite_frames = SubResource("SpriteFrames_smfc2")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
 
-[node name="PunchMiddleHitbox" type="Area3D" parent="Player/FlipParent" unique_id=1571462131]
+[node name="PunchMiddleHitbox" type="Area3D" parent="Player/FlipParent" unique_id=1571462131 node_paths=PackedStringArray("attacker_entity")]
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("71_iobf8")
+attacker_entity = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/FlipParent/PunchMiddleHitbox" unique_id=786897835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9844222, 0.53360796, 0)
 shape = SubResource("CapsuleShape3D_jydfl")
 debug_color = Color(0.99218434, 0, 0.26181343, 0.41960785)
 
-[node name="PunchLowHitbox" type="Area3D" parent="Player/FlipParent" unique_id=1664691404]
+[node name="PunchLowHitbox" type="Area3D" parent="Player/FlipParent" unique_id=1664691404 node_paths=PackedStringArray("attacker_entity")]
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("71_iobf8")
+attacker_entity = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/FlipParent/PunchLowHitbox" unique_id=954487852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0683107, -0.6433406, 0)
 shape = SubResource("SphereShape3D_u0n8q")
 debug_color = Color(0.99218434, 0, 0.26181343, 0.41960785)
 
-[node name="PunchHighHitbox" type="Area3D" parent="Player/FlipParent" unique_id=431201999]
+[node name="PunchHighHitbox" type="Area3D" parent="Player/FlipParent" unique_id=431201999 node_paths=PackedStringArray("attacker_entity")]
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("71_iobf8")
+attacker_entity = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/FlipParent/PunchHighHitbox" unique_id=264193176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.580524, 2.3374872, 0)
@@ -480,6 +457,8 @@ debug_color = Color(0.99218434, 0, 0.26181343, 0.41960785)
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1205810095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 12)
+environment = SubResource("Environment_p1qlp")
+script = ExtResource("68_1sbqr")
 
 [node name="BgSky" type="Sprite3D" parent="Player/Camera3D" unique_id=1789416212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -53.098648)
@@ -489,54 +468,43 @@ render_priority = -20
 texture = ExtResource("68_u0n8q")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/Camera3D" unique_id=1737419508]
-stream = ExtResource("70_om2me")
+stream = ExtResource("70_1sbqr")
 autoplay = true
 
-[node name="Dog" type="CharacterBody3D" parent="." unique_id=1643297652 node_paths=PackedStringArray("rhythm_manager", "player_node")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.790379, 1.2249827, 0.47963297)
-collision_layer = 4
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-wall_min_slide_angle = 0.0
-floor_block_on_wall = false
-floor_snap_length = 0.2
-script = ExtResource("71_ebg7i")
-rhythm_manager = NodePath("../RhythmManager")
-player_node = NodePath("../Player")
+[node name="EffectivenessLabel" type="Label3D" parent="Player" unique_id=1652015655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+modulate = Color(0.35216355, 0.80496377, 0.22359708, 1)
+text = "GOOD"
+font = SubResource("FontVariation_p1qlp")
+font_size = 100
+outline_size = 50
+script = ExtResource("71_p1qlp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dog" unique_id=1306827910]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09082031, 0)
-shape = SubResource("CylinderShape3D_ebg7i")
-
-[node name="FlipParent" type="Node3D" parent="Dog" unique_id=1201661188]
-
-[node name="ShadowMesh" type="MeshInstance3D" parent="Dog/FlipParent" unique_id=668473269]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23664665, 0, 0)
-visible = false
-transparency = 1.0
-mesh = SubResource("SphereMesh_vwqyp")
-skeleton = NodePath("../..")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Dog/FlipParent" unique_id=397467885]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2911472, 0)
-material_override = SubResource("ShaderMaterial_p1qlp")
-flip_h = true
-pixel_size = 0.02
-alpha_cut = 2
-sprite_frames = SubResource("SpriteFrames_1sbqr")
-animation = &"walk"
-
-[node name="DogHurtbox" type="Area3D" parent="Dog" unique_id=2020845539 node_paths=PackedStringArray("entity")]
+[node name="Hurtbox" type="Area3D" parent="Player" unique_id=902471039 node_paths=PackedStringArray("entity")]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("78_kbk4x")
 entity = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dog/DogHurtbox" unique_id=218324578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09082031, 0)
-shape = SubResource("SphereShape3D_iobf8")
-debug_color = Color(0.98857003, 0, 0.30572385, 0.41960785)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Hurtbox" unique_id=125786140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15600586, 0)
+shape = SubResource("CapsuleShape3D_iobf8")
+debug_color = Color(0.83363503, 0.0013415003, 0.9378459, 0.41960785)
+
+[node name="Dog" parent="." unique_id=1346528744 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.790379, 1.2249827, 0.47963297)
+rhythm_manager = NodePath("../RhythmManager")
+player_node = NodePath("../Player")
+
+[node name="Dog3" parent="." unique_id=1038680366 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.38954, 3.3927054, 0.47963297)
+rhythm_manager = NodePath("../RhythmManager")
+player_node = NodePath("../Player")
+
+[node name="Dog2" parent="." unique_id=1898847401 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.09961, 7.2120223, 0.47963297)
+rhythm_manager = NodePath("../RhythmManager")
+player_node = NodePath("../Player")
 
 [node name="Buildings" type="Node3D" parent="." unique_id=423951006 node_paths=PackedStringArray("rhythm_manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, -15)
@@ -550,6 +518,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 extra_cull_margin = 16384.0
 custom_aabb = AABB(-10000, -10000, -10000, 20000, 20000, 20000)
 pixel_size = 0.05
+render_priority = -2
 texture = ExtResource("67_jydfl")
 script = ExtResource("68_d5irf")
 camera = NodePath("../../Player/Camera3D")
@@ -560,6 +529,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
 extra_cull_margin = 16384.0
 flip_v = true
 pixel_size = 0.05
+render_priority = -2
 texture = ExtResource("67_jydfl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=285545575]

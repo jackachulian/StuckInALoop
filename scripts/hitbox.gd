@@ -1,7 +1,9 @@
 class_name Hitbox
 extends Area3D
 
+@export var attacker_entity: CharacterBody3D
 @export var damage: int = 1
+@export var can_always_hit: bool
 
 # Ensure this only hits once per attack
 var can_hit: bool
@@ -23,15 +25,21 @@ func _process(delta: float) -> void:
 		monitoring = false
 		hide()
 
-func _on_area_entered(body):
-	print("body entered: ", body)
-	if can_hit and body.has_method("take_damage"):
+func _on_area_entered(area: Area3D):
+	print("area entered: ", area)
+	print("attacker: ", attacker_entity)
+	if area == attacker_entity.hurtbox:
+		return
+	
+	if (can_hit or can_always_hit) and area.has_method("take_damage") and area.monitorable:
 		can_hit = false
-		body.take_damage(damage)
-		if body.has_method("take_knockback"):
-			body.take_knockback(current_knockback)
+		area.take_damage(damage)
+		if area.has_method("take_knockback"):
+			area.take_knockback(current_knockback)
+		if attacker_entity and attacker_entity.get("rhythm_camera") != null and attacker_entity.get("hit_effectiveness") != null:
+			attacker_entity.rhythm_camera.rhythm_hit_camera_effect(attacker_entity.hit_effectiveness)
 
-func hit(knockback: Vector3, damage: int = 1, duration: float = 0.25):
+func hit(knockback: Vector3, damage: int = 1, duration: float = 0.05):
 	can_hit = true
 	duration_timer = 0.0
 	current_knockback = knockback

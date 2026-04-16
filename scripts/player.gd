@@ -3,6 +3,9 @@ extends CharacterBody3D
 # ==== PLAYER
 
 @export var rhythm_manager: RhythmManager
+@export var hurtbox: Hurtbox
+@export var health: int = 4
+@export var hit_invincibility_time: float = 1.0
 @export var speed = 18.0
 @export var slide_speed = 22.5
 @export var jump_velocity = 6.0
@@ -16,13 +19,18 @@ extends CharacterBody3D
 @onready var punch_middle_hitbox: Hitbox = $FlipParent/PunchMiddleHitbox
 @onready var punch_low_hitbox: Hitbox = $FlipParent/PunchLowHitbox
 @onready var punch_high_hitbox: Hitbox = $FlipParent/PunchHighHitbox
+@onready var effectiveness_label: RhythmEffectivenessText = $EffectivenessLabel
+@onready var rhythm_camera: RhythmCamera = $Camera3D
 
+# Miss, Okay, Good, Great, Perfect
 
 var was_on_floor_last_process: bool
 var idle_time: float
 var facing_right: bool = true
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
+var hit_invincibility_timer := 0.0
+var hit_effectiveness: RhythmManager.HitEffectiveness # of last attack
 
 func _ready() -> void:
 	was_on_floor_last_process = true
@@ -32,16 +40,16 @@ func _ready() -> void:
 func _on_frame_changed():
 	var hit_direction := 1 if facing_right else -1
 	
-	if animated_sprite_3d.animation == "punch_middle" and animated_sprite_3d.frame == 2:
+	if animated_sprite_3d.animation == "punch_middle" and animated_sprite_3d.frame == 1:
 		punch_middle_hitbox.hit(Vector3(hit_direction*12.5, 10.0, 0.0))
-	elif animated_sprite_3d.animation == "punch_high" and animated_sprite_3d.frame == 2:
+	elif animated_sprite_3d.animation == "punch_high" and animated_sprite_3d.frame == 1:
 		punch_high_hitbox.hit(Vector3(hit_direction*5.0, 15.0, 0.0))
 	elif animated_sprite_3d.animation == "punch_low" and animated_sprite_3d.frame == 1:
 		punch_low_hitbox.hit(Vector3(hit_direction*22.5, 7.5, 0.0))
 	
 func _on_anim_finished() -> void:
 	# Attack finish
-	if is_in_attack_animation():
+	if is_in_attack_animation() or is_hurt():
 		play_animation_synced("idle", 2)
 		
 	# run_start into run
@@ -49,6 +57,14 @@ func _on_anim_finished() -> void:
 		play_animation_synced("run", 1)
 	
 func _physics_process(delta: float) -> void:
+	if (hit_invincibility_timer > 0):
+		hit_invincibility_timer -= delta
+		if hit_invincibility_timer <= 0:
+			print("invincibility over")
+			hurtbox.monitorable = true
+			hurtbox.monitoring = true
+			hurtbox.collision_shape_3d.disabled = false
+	
 	# Gravity
 	if not is_on_floor():
 		idle_time = 0
@@ -59,23 +75,27 @@ func _physics_process(delta: float) -> void:
 			#animated_sprite_3d.play("fall") 
 		
 	# Attack
-	if Input.is_action_just_pressed("punch") and can_act():
-		##Half horizontal velocity if in air
-		#if not is_on_floor():
-			#velocity.x /= 2
-		
+	if Input.is_action_just_pressed("punch"):
+		# Consume the beat even if currently in an action
+		hit_effectiveness = rhythm_manager.consume_beat()
 		idle_time = 0
-		if Input.is_action_pressed("ui_up"):
-			animated_sprite_3d.play("punch_high")
-			animated_sprite_3d.frame = 0
-		elif Input.is_action_pressed("ui_down"):
-			animated_sprite_3d.play("punch_low")
-			animated_sprite_3d.frame = 0
-			velocity.x = (1 if facing_right else -1) * slide_speed
-		else:
-			animated_sprite_3d.play("punch_middle")
-			animated_sprite_3d.frame = 0
-		
+		if can_act():
+			# Then if not in an action, show the label and transition if successful
+			effectiveness_label.show_effectiveness(hit_effectiveness)
+			#rhythm_camera.rhythm_hit_camera_effect(hit_effectiveness)
+			if hit_effectiveness != RhythmManager.HitEffectiveness.Miss:
+				if Input.is_action_pressed("ui_up"):
+					animated_sprite_3d.play("punch_high")
+					animated_sprite_3d.frame = 0
+				elif Input.is_action_pressed("ui_down"):
+					animated_sprite_3d.play("punch_low")
+					animated_sprite_3d.frame = 0
+					var dash_strength: float = [0.0, 0.55, 0.75, 0.9, 1.00][hit_effectiveness]
+					velocity.x = (1 if facing_right else -1) * slide_speed * dash_strength
+				else:
+					animated_sprite_3d.play("punch_middle")
+					animated_sprite_3d.frame = 0
+			
 	# Stop player form sliding if they are attacking and on the floor. (Not for low attack which is a slide)
 	if animated_sprite_3d.animation in ["punch_middle", "punch_high"] and is_on_floor():
 		velocity.x = 0
@@ -128,7 +148,7 @@ func _physics_process(delta: float) -> void:
 	if animated_sprite_3d.animation == "intro":
 		animated_sprite_3d.position.y = 0.435
 	else:
-		animated_sprite_3d.position.y = 0.535
+		animated_sprite_3d.position.y = 0.555
 			
 		
 	#if is_on_wall() and not is_on_floor():
@@ -147,6 +167,20 @@ func is_in_attack_animation() -> bool:
 	
 func is_hurt() -> bool:
 	return animated_sprite_3d.animation == "hurt"
+	
+func take_damage(damage: int):
+	print(name, " took ", damage, " damage")
+	health -= damage
+	if (health <= 0):
+		#queue_free()
+		print("death")
+	else:
+		hit_invincibility_timer = hit_invincibility_time
+		animated_sprite_3d.animation = "hurt"
+		print("invincibility started")
+		hurtbox.monitorable = false
+		hurtbox.monitoring = false
+		hurtbox.collision_shape_3d.disabled = true
 	
 ## Can jump, move or attack
 func can_act() -> bool:
