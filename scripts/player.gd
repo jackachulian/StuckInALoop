@@ -26,8 +26,12 @@ extends CharacterBody3D
 @onready var hit_sound_player: AudioStreamPlayer3D = $Camera3D/HitSoundPlayer
 
 signal health_changed
+signal control_changed
 
 # Miss, Okay, Good, Great, Perfect
+
+## False during cutscenes
+var has_control: bool
 
 var was_on_floor_last_process: bool
 var idle_time: float
@@ -41,6 +45,10 @@ func _ready() -> void:
 	was_on_floor_last_process = true
 	animated_sprite_3d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_3d.frame_changed.connect(_on_frame_changed)
+	
+func set_control(can_control: bool) -> void:
+	has_control = can_control
+	control_changed.emit()
 	
 func _on_frame_changed():
 	var hit_direction := 1 if facing_right else -1
@@ -82,7 +90,7 @@ func _physics_process(delta: float) -> void:
 			# Once HL finishes the jump anim
 			#animated_sprite_3d.play("fall") 
 		
-	if health <= 0:
+	if health <= 0 or not has_control:
 		if is_on_floor():
 			velocity.x = 0
 		move_and_slide()

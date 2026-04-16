@@ -3,7 +3,6 @@ extends ColorRect
 @export var rhythm_manager: RhythmManager
 @export var player: Player
 
-
 func _ready() -> void:
 	rhythm_manager.beat.connect(_on_beat)
 	

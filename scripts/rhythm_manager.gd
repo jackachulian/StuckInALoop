@@ -12,9 +12,8 @@ var last_consumed_beat: int
 var last_process_playback_pos: float
 
 signal beat
-
-func _ready() -> void:
-	# Start slightly behind the beat based on timing offset 
+	
+func start_rhythming():
 	beats_per_second = beats_per_minute / 60.0
 	current_beat = ((OptionsManager.beat_offset_milliseconds / 1000.0) * beats_per_second) * -1
 	last_signaled_beat = floor(current_beat)

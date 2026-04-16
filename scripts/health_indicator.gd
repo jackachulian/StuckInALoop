@@ -6,6 +6,13 @@ extends AnimatedSprite2D
 func _ready() -> void:
 	_on_player_health_changed()
 	player.health_changed.connect(_on_player_health_changed)
+	player.control_changed.connect(_on_player_control_changed)
+
+func _on_player_control_changed():
+	if player.has_control:
+		show()
+	else:
+		hide()
 
 func _on_player_health_changed():
 	match player.health:

@@ -59,6 +59,9 @@ func _on_frame_changed():
 		#play_animation_synced("walk", 2)
 	
 func _physics_process(delta: float) -> void:
+	if not is_visible_in_tree():
+		return
+	
 	hurt_timer += delta
 	
 	# Gravity

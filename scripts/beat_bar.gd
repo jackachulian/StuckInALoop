@@ -2,6 +2,7 @@ class_name BeatBar
 extends ColorRect
 
 @export var rhythm_manager: RhythmManager
+@export var player: Player
 
 @export var beat_lookahead: float = 2.5
 @export var marker_scene: PackedScene
@@ -15,6 +16,13 @@ func _ready() -> void:
 	# Cannot spawn markers for beats that happened in the past
 	while last_marker_spawn_beat < beat_lookahead:
 		last_marker_spawn_beat += 1
+	player.control_changed.connect(_on_player_control_changed)
+
+func _on_player_control_changed():
+	if player.has_control:
+		show()
+	else:
+		hide()
 	
 func _process(_delta: float) -> void:
 	# If the current marker should have spawned by now, spawn it

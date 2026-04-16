@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://dxon0mk8dgivo"]
 
 [ext_resource type="MeshLibrary" uid="uid://ccfqgnrmjp55p" path="res://resources/mesh_library.tres" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://c2n2q4i5xte8x" path="res://scripts/game_manager.gd" id="1_ffpg5"]
 [ext_resource type="Script" uid="uid://citj18fvipg5q" path="res://scripts/options_loader.gd" id="1_p1qlp"]
 [ext_resource type="Script" uid="uid://d4liokkpmm886" path="res://scripts/rhythm_manager.gd" id="1_vwqyp"]
+[ext_resource type="AudioStream" uid="uid://h2mf5jwsl5oi" path="res://audio/STEAL_ALL_MUSIC (Intro Cutscene).wav" id="2_43d7i"]
 [ext_resource type="Script" uid="uid://cahnhtrrxxoja" path="res://scripts/player.gd" id="2_mx8sn"]
+[ext_resource type="Script" uid="uid://5qum345h140y" path="res://scripts/intro_cutscene.gd" id="3_xcbo0"]
 [ext_resource type="Texture2D" uid="uid://dejoek7k33edh" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0001.png" id="4_c1pbi"]
 [ext_resource type="Script" uid="uid://cciteywr71vqp" path="res://scripts/beat_manager.gd" id="4_ppgk2"]
 [ext_resource type="Texture2D" uid="uid://coy3clxl5d8mt" path="res://sprites/PROTAG/500x500/Intro/spr_gamejam_protag_introchill_0002.png" id="5_535f6"]
@@ -86,41 +89,79 @@
 [ext_resource type="Script" uid="uid://ucjnpwwr5ghd" path="res://scripts/rhythm_pulser_control.gd" id="76_om2me"]
 [ext_resource type="PackedScene" uid="uid://dp8lm0i3k1rno" path="res://scenes/scene_transition.tscn" id="76_s1acf"]
 [ext_resource type="Script" uid="uid://cl58uijybdsf7" path="res://scripts/hurtbox.gd" id="78_kbk4x"]
+[ext_resource type="Texture2D" uid="uid://b44s23ogh323i" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle1.png" id="84_cum3f"]
 [ext_resource type="Shader" uid="uid://yj5m57rtgpj4" path="res://shaders/dots.gdshader" id="84_iobf8"]
+[ext_resource type="Script" uid="uid://bow211gej4swx" path="res://scripts/count_p_wright.gd" id="84_nvlaw"]
+[ext_resource type="Texture2D" uid="uid://d0vmr6qv31hr7" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle2.png" id="85_nvlaw"]
+[ext_resource type="Texture2D" uid="uid://dvio4pnga0sgi" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle3.png" id="86_xc3so"]
 [ext_resource type="Script" uid="uid://ci3ruampdjx7q" path="res://scripts/dot_vignette_pulse.gd" id="87_1sbqr"]
+[ext_resource type="Texture2D" uid="uid://5fpwkhras8x3" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle4.png" id="87_2eb5f"]
 [ext_resource type="Texture2D" uid="uid://bj7oa4dnsubfe" path="res://sprites/Health/1/spr_gamejam_health_0.png" id="88_6cpub"]
+[ext_resource type="Texture2D" uid="uid://c3pgidmtwlut7" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle5.png" id="88_f5w0b"]
 [ext_resource type="Texture2D" uid="uid://cqnj1mo0lbn50" path="res://sprites/Health/1/spr_gamejam_health_1.png" id="89_ffpg5"]
+[ext_resource type="Texture2D" uid="uid://cqbefha8sl3me" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle6.png" id="89_qod8n"]
 [ext_resource type="Texture2D" uid="uid://dml0pfu5myjsg" path="res://sprites/Health/1/spr_gamejam_health_2.png" id="90_43d7i"]
+[ext_resource type="Texture2D" uid="uid://dkuj8j3hsa5cq" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle7.png" id="90_tf538"]
+[ext_resource type="Texture2D" uid="uid://yrcrnpk880er" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle8.png" id="91_0flyn"]
 [ext_resource type="Texture2D" uid="uid://be5phn5cvir2c" path="res://sprites/Health/1/spr_gamejam_health_3.png" id="91_xcbo0"]
 [ext_resource type="Texture2D" uid="uid://batlichg1pgqf" path="res://sprites/Health/1/spr_gamejam_health_4.png" id="92_cutyp"]
+[ext_resource type="Texture2D" uid="uid://c60c2ah5xim0n" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle9.png" id="92_hwnun"]
 [ext_resource type="Texture2D" uid="uid://pgl7l8hudlja" path="res://sprites/Health/1/spr_gamejam_health_5.png" id="93_8xc4d"]
+[ext_resource type="Texture2D" uid="uid://bdy6t0qrmr40u" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle10.png" id="93_h423s"]
+[ext_resource type="Texture2D" uid="uid://pro44hfrbj4x" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle11.png" id="94_3ek4g"]
 [ext_resource type="Texture2D" uid="uid://bdri74n6fbe4k" path="res://sprites/Health/1/spr_gamejam_health_6.png" id="94_83thi"]
+[ext_resource type="Texture2D" uid="uid://b2q4jkswpcyxr" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle12.png" id="95_7ede4"]
 [ext_resource type="Texture2D" uid="uid://8eba442h02h3" path="res://sprites/Health/1/spr_gamejam_health_7.png" id="95_ikv53"]
+[ext_resource type="Texture2D" uid="uid://cqqyf3n8ta3wq" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle13.png" id="96_dh7tm"]
 [ext_resource type="Texture2D" uid="uid://vb1lxkiymnm4" path="res://sprites/Health/2/spr_gamejam_health_2.png" id="96_koa75"]
 [ext_resource type="Texture2D" uid="uid://chpfaarrug0ao" path="res://sprites/Health/2/spr_gamejam_health_3.png" id="97_2op70"]
+[ext_resource type="Texture2D" uid="uid://dfhm1tc5npgda" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle14.png" id="97_ckhyv"]
 [ext_resource type="Texture2D" uid="uid://bpuswbqdhbdrb" path="res://sprites/Health/2/spr_gamejam_health_4.png" id="98_3xenl"]
+[ext_resource type="Texture2D" uid="uid://dyg361af30kn4" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle15.png" id="98_sgn26"]
+[ext_resource type="Texture2D" uid="uid://cer4ing7okxat" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle16.png" id="99_ipooi"]
 [ext_resource type="Texture2D" uid="uid://bdbbelgdl6mv6" path="res://sprites/Health/2/spr_gamejam_health_5.png" id="99_rgio3"]
+[ext_resource type="Texture2D" uid="uid://dph6ut7whlhob" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle17.png" id="100_2b1y3"]
 [ext_resource type="Texture2D" uid="uid://cdet18rl4hj0v" path="res://sprites/Health/2/spr_gamejam_health_6.png" id="100_yynpt"]
+[ext_resource type="Texture2D" uid="uid://xceou72ebp1x" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle18.png" id="101_qwxy0"]
 [ext_resource type="Texture2D" uid="uid://032hivp675r5" path="res://sprites/Health/2/spr_gamejam_health_7.png" id="101_v65ao"]
 [ext_resource type="Texture2D" uid="uid://bqgpu7w4ctf0j" path="res://sprites/Health/2/spr_gamejam_health_8.png" id="102_3ppff"]
+[ext_resource type="Texture2D" uid="uid://c0gy5roiu7784" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle19.png" id="102_4762f"]
 [ext_resource type="Texture2D" uid="uid://cl6pbh32wnovh" path="res://sprites/Health/2/spr_gamejam_health_9.png" id="103_gwyuy"]
+[ext_resource type="Texture2D" uid="uid://dfhmt6ovqs10n" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle20.png" id="103_gyx5g"]
+[ext_resource type="Texture2D" uid="uid://dvs46e00moru8" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle21.png" id="104_1tja7"]
 [ext_resource type="Texture2D" uid="uid://cn3ydpivsfrr4" path="res://sprites/Health/2/spr_gamejam_health_10.png" id="104_xwsfi"]
 [ext_resource type="Texture2D" uid="uid://ckvbglo3gktw8" path="res://sprites/Health/2/spr_gamejam_health_11.png" id="105_cwhec"]
+[ext_resource type="Texture2D" uid="uid://76waf7mstn77" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle22.png" id="105_qvdeo"]
+[ext_resource type="Texture2D" uid="uid://b27h4rvb3pmpk" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle23.png" id="106_0igxi"]
 [ext_resource type="Texture2D" uid="uid://co3dcdsamqbpg" path="res://sprites/Health/2/spr_gamejam_health_12.png" id="106_d5ouc"]
+[ext_resource type="Texture2D" uid="uid://cqg08j7ej25fb" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle24.png" id="107_j4h4y"]
 [ext_resource type="Texture2D" uid="uid://2rwl0v1lp5ph" path="res://sprites/Health/2/spr_gamejam_health_13.png" id="107_vwvcq"]
 [ext_resource type="Texture2D" uid="uid://bfpirbwdj87vg" path="res://sprites/Health/2/spr_gamejam_health_14.png" id="108_6bfqh"]
+[ext_resource type="Texture2D" uid="uid://dxhuyxa542sgd" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle25.png" id="108_av2nq"]
 [ext_resource type="Texture2D" uid="uid://b4ber1vl6pif2" path="res://sprites/Health/2/spr_gamejam_health_15.png" id="109_rrs1e"]
+[ext_resource type="Texture2D" uid="uid://hs6g24mg61a5" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle26.png" id="109_vv325"]
 [ext_resource type="Texture2D" uid="uid://6rj2cjivd8xf" path="res://sprites/Health/2/spr_gamejam_health_16.png" id="110_g31u5"]
+[ext_resource type="Texture2D" uid="uid://bwbkfuvb6f0kp" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle27.png" id="110_ixpuu"]
 [ext_resource type="Texture2D" uid="uid://0c6pc5xbjqsr" path="res://sprites/Health/2/spr_gamejam_health_17.png" id="111_dcfgc"]
+[ext_resource type="Texture2D" uid="uid://ce62artg57hpb" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle28.png" id="111_xulyg"]
+[ext_resource type="Texture2D" uid="uid://bthb028p3cn0u" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle29.png" id="112_jsyds"]
 [ext_resource type="Texture2D" uid="uid://sysvbyq6tnud" path="res://sprites/Health/2/spr_gamejam_health_18.png" id="112_td5iv"]
 [ext_resource type="Texture2D" uid="uid://b7sj57xhw16nh" path="res://sprites/Health/2/spr_gamejam_health_19.png" id="113_4fwy4"]
+[ext_resource type="Texture2D" uid="uid://brqrdhdxd71gb" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle30.png" id="113_cfydv"]
 [ext_resource type="Texture2D" uid="uid://cbbc2r55a3rp2" path="res://sprites/Health/2/spr_gamejam_health_20.png" id="114_l5p7p"]
+[ext_resource type="Texture2D" uid="uid://djh1sbudfnv53" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle31.png" id="114_uapyc"]
+[ext_resource type="Texture2D" uid="uid://deaaadi0em7o2" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle32.png" id="115_p6djk"]
 [ext_resource type="Texture2D" uid="uid://xj0xhmf41sj0" path="res://sprites/Health/3/spr_gamejam_health_3.png" id="115_rbs36"]
+[ext_resource type="Texture2D" uid="uid://b7c86u0b66ya5" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle33.png" id="116_kd1gl"]
 [ext_resource type="Texture2D" uid="uid://isupopn3syo8" path="res://sprites/Health/3/spr_gamejam_health_4.png" id="116_vky28"]
+[ext_resource type="Texture2D" uid="uid://4o5tsb5nehap" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle34.png" id="117_3mj5x"]
 [ext_resource type="Texture2D" uid="uid://bqvytqcyefbtb" path="res://sprites/Health/3/spr_gamejam_health_5.png" id="117_d635u"]
+[ext_resource type="Texture2D" uid="uid://dagu4t0hqrdtn" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle35.png" id="118_65ot6"]
 [ext_resource type="Texture2D" uid="uid://drcgs4s08ra63" path="res://sprites/Health/3/spr_gamejam_health_6.png" id="118_vbci2"]
+[ext_resource type="Texture2D" uid="uid://dyjyeu482npon" path="res://sprites/CountPWright/500x500/Idle/spr_gamejam_count_body_idle36.png" id="119_gw3nu"]
 [ext_resource type="Texture2D" uid="uid://dllnnnyhwp480" path="res://sprites/Health/3/spr_gamejam_health_7.png" id="119_kpr2a"]
 [ext_resource type="Texture2D" uid="uid://cv2qgjsafwt14" path="res://sprites/Health/3/spr_gamejam_health_8.png" id="120_1lic4"]
+[ext_resource type="PackedScene" uid="uid://bmuhtsyy0gbdl" path="res://scenes/count_hand.tscn" id="121_i81it"]
 [ext_resource type="Texture2D" uid="uid://t5mddpbuutxy" path="res://sprites/Health/3/spr_gamejam_health_9.png" id="121_pudow"]
 [ext_resource type="Texture2D" uid="uid://bd08785mtkbuq" path="res://sprites/Health/3/spr_gamejam_health_10.png" id="122_2bamd"]
 [ext_resource type="Texture2D" uid="uid://c6la026bmm7wp" path="res://sprites/Health/3/spr_gamejam_health_11.png" id="123_apeb7"]
@@ -274,6 +315,20 @@ animations = [{
 "loop": true,
 "name": &"intro",
 "speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ebg7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iobf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kbk4x")
+}],
+"loop": false,
+"name": &"intro_wildtake",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -432,6 +487,122 @@ height = 2.7485352
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c1pbi"]
 friction = 0.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2cfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("84_cum3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_nvlaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_xc3so")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_2eb5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_f5w0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_qod8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_tf538")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_0flyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_hwnun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_h423s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_3ek4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_7ede4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_dh7tm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_ckhyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_sgn26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_ipooi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_2b1y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_qwxy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_4762f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_gyx5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_1tja7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_qvdeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_0igxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_j4h4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_av2nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_vv325")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_ixpuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_xulyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_jsyds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_cfydv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_uapyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_p6djk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_kd1gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_3mj5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_65ot6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_gw3nu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbk4x"]
 shader = ExtResource("84_iobf8")
@@ -661,7 +832,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Game" type="Node3D" unique_id=1628288231]
+[node name="Game" type="Node3D" unique_id=1628288231 node_paths=PackedStringArray("rhythm_manager", "player")]
+script = ExtResource("1_ffpg5")
+rhythm_manager = NodePath("RhythmManager")
+player = NodePath("Player")
+intro_music = ExtResource("2_43d7i")
+
+[node name="IntroCutscene" type="Node" parent="." unique_id=1972200377 node_paths=PackedStringArray("player", "count_p_wright", "scene_transition")]
+script = ExtResource("3_xcbo0")
+player = NodePath("../Player")
+count_p_wright = NodePath("../Level 0-Intro/CountPWright")
+scene_transition = NodePath("../SceneTransition")
 
 [node name="OptionsLoader" type="Node" parent="." unique_id=355547306]
 script = ExtResource("1_p1qlp")
@@ -710,7 +891,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535, 0)
 alpha_cut = 2
 render_priority = 2
 sprite_frames = SubResource("SpriteFrames_smfc2")
-animation = &"hurt"
+animation = &"intro_wildtake"
 autoplay = "idle"
 
 [node name="PunchMiddleHitbox" type="Area3D" parent="Player/FlipParent" unique_id=1571462131 node_paths=PackedStringArray("attacker_entity")]
@@ -787,21 +968,6 @@ data = {
 "cells": PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65532, 65529, 0, 3, 0, 0, 65531, 65529, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65531, 65533, 0, 65531, 65532, 0, 65531, 65531, 0, 65531, 65530, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 19, 65535, 0, 19, 65534, 0, 20, 65534, 0, 20, 65535, 0, 20, 0, 0, 23, 0, 0, 23, 65535, 0, 23, 65534, 0, 24, 65534, 0, 24, 65535, 0, 24, 0, 0, 25, 0, 0, 25, 65535, 0, 26, 65535, 0, 26, 0, 0, 27, 0, 0, 27, 65535, 0, 28, 65535, 0, 28, 0, 0, 29, 65535, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 32, 65535, 0, 31, 65535, 0, 30, 65535, 0, 33, 65535, 0, 33, 0, 0, 34, 0, 0, 34, 65535, 0, 34, 65534, 0, 35, 65533, 0, 35, 65534, 0, 35, 65535, 0, 35, 0, 0, 34, 65533, 0, 36, 65533, 0, 37, 65533, 0, 38, 65533, 0, 39, 65533, 0, 40, 65533, 0, 40, 65534, 0, 40, 65535, 0, 39, 65535, 0, 39, 0, 0, 38, 0, 0, 37, 0, 0, 36, 0, 0, 36, 65535, 0, 36, 65534, 0, 37, 65534, 0, 38, 65534, 0, 39, 65534, 0, 38, 65535, 0, 37, 65535, 0, 40, 0, 0, 46, 0, 0, 46, 65535, 0, 47, 65535, 0, 48, 65535, 0, 49, 65535, 0, 50, 65535, 0, 51, 65535, 0, 51, 0, 0, 50, 0, 0, 49, 0, 0, 48, 0, 0, 47, 0, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 20, 2, 0, 20, 3, 0, 19, 3, 0, 18, 3, 0, 17, 3, 0, 16, 3, 0, 15, 3, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 14, 3, 0, 13, 3, 0, 12, 3, 0, 11, 2, 0, 10, 2, 0, 9, 2, 0, 8, 2, 0, 7, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 8, 3, 0, 7, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 6, 3, 0, 5, 3, 0, 4, 3, 0, 3, 3, 0, 2, 3, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 65534, 3, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65532, 2, 0, 65531, 2, 0, 65531, 3, 0, 6, 2, 0, 5, 2, 0, 4, 2, 0, 65532, 3, 0, 65533, 3, 0, 65530, 3, 0, 65530, 2, 0, 65530, 1, 0, 65530, 0, 0, 65530, 65535, 0, 65530, 65534, 0, 65530, 65532, 0, 65530, 65531, 0, 65530, 65533, 0, 65530, 65530, 0, 65530, 65529, 0, 65529, 65529, 0, 65528, 65529, 0, 65527, 65529, 0, 65527, 65530, 0, 65529, 65531, 0, 65528, 65530, 0, 65529, 65530, 0, 65529, 65532, 0, 65529, 65533, 0, 65529, 65534, 0, 65529, 65535, 0, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65528, 3, 0, 65528, 2, 0, 65527, 1, 0, 65527, 0, 0, 65527, 65535, 0, 65527, 65534, 0, 65527, 65533, 0, 65528, 65533, 0, 65528, 65532, 0, 65528, 65531, 0, 65527, 65531, 0, 65527, 65532, 0, 65528, 65534, 0, 65528, 65535, 0, 65528, 0, 0, 65528, 1, 0, 65527, 3, 0, 65527, 2, 0, 21, 0, 0, 22, 0, 0, 46, 1, 0, 45, 1, 0, 44, 1, 0, 43, 1, 0, 42, 1, 0, 41, 1, 0, 40, 1, 0, 52, 65535, 0, 53, 65535, 0, 54, 65535, 0, 55, 65535, 0, 56, 0, 0, 57, 0, 0, 58, 0, 0, 59, 0, 0, 60, 0, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 0, 0, 65, 0, 0, 58, 65535, 0, 57, 65535, 0, 56, 65535, 0, 52, 0, 0, 53, 0, 0, 54, 0, 0, 55, 0, 0, 66, 0, 0, 65, 65535, 0, 64, 65535, 0, 63, 65535, 0, 62, 65535, 0, 61, 65535, 0, 60, 65535, 0, 59, 65535, 0, 66, 65535, 0, 67, 65535, 0, 68, 65535, 0, 69, 65535, 0, 70, 65535, 0, 71, 0, 0, 72, 0, 0, 73, 0, 0, 74, 0, 0, 75, 0, 0, 76, 0, 0, 70, 0, 0, 69, 0, 0, 68, 0, 0, 67, 0, 0, 73, 65535, 0, 74, 65535, 0, 75, 65535, 0, 76, 65535, 0, 72, 65535, 0, 71, 65535, 0, 77, 65535, 0, 78, 65535, 0, 79, 65535, 0, 80, 65535, 0, 81, 65535, 0, 82, 65535, 0, 83, 65535, 0, 84, 65535, 0, 85, 65535, 0, 86, 65535, 0, 87, 65535, 0, 88, 65535, 0, 89, 65535, 0, 90, 65535, 0, 91, 65535, 0, 92, 65535, 0, 93, 65535, 0, 94, 65535, 0, 94, 0, 0, 93, 0, 0, 92, 0, 0, 91, 0, 0, 90, 0, 0, 89, 0, 0, 88, 0, 0, 87, 0, 0, 86, 0, 0, 85, 0, 0, 84, 0, 0, 83, 0, 0, 82, 0, 0, 81, 0, 0, 80, 0, 0, 79, 0, 0, 78, 0, 0, 77, 0, 0)
 }
 
-[node name="Dog" parent="Level 0-Intro" unique_id=1346528744 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.790379, 1.2249827, 0.47963297)
-rhythm_manager = NodePath("../../RhythmManager")
-player_node = NodePath("../../Player")
-
-[node name="Dog3" parent="Level 0-Intro" unique_id=1038680366 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.38954, 3.3927054, 0.47963297)
-rhythm_manager = NodePath("../../RhythmManager")
-player_node = NodePath("../../Player")
-
-[node name="Dog2" parent="Level 0-Intro" unique_id=1898847401 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.09961, 7.2120223, 0.47963297)
-rhythm_manager = NodePath("../../RhythmManager")
-player_node = NodePath("../../Player")
-
 [node name="BgSky" type="Sprite3D" parent="Level 0-Intro" unique_id=283281255 node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -42)
 extra_cull_margin = 16384.0
@@ -842,6 +1008,98 @@ texture = ExtResource("67_jydfl")
 transform = Transform3D(0.91025054, -0.23611267, 0.34013936, 0.022593854, 0.84857744, 0.5285886, -0.41344106, -0.473463, 0.7777527, 0, 30.719896, 14.432915)
 shadow_enabled = true
 
+[node name="CountPWright" type="CharacterBody3D" parent="Level 0-Intro" unique_id=526416925 node_paths=PackedStringArray("left_hand", "right_hand")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.883271, 5.680935, 0)
+script = ExtResource("84_nvlaw")
+left_hand = NodePath("../CountHandLeft")
+right_hand = NodePath("../CountHand")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level 0-Intro/CountPWright" unique_id=180745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7388916, 0)
+shape = SubResource("CapsuleShape3D_c1pbi")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level 0-Intro/CountPWright" unique_id=1527187354]
+pixel_size = 0.02
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_h2cfo")
+autoplay = "default"
+
+[node name="CountHand" parent="Level 0-Intro" unique_id=439177431 node_paths=PackedStringArray("count") instance=ExtResource("121_i81it")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.054902, 3.8442783, 0)
+count = NodePath("../CountPWright")
+
+[node name="CountHandLeft" parent="Level 0-Intro" unique_id=1062056816 node_paths=PackedStringArray("count") instance=ExtResource("121_i81it")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5912533, 3.8442783, 0)
+count = NodePath("../CountPWright")
+
+[node name="AnimatedSprite3D" parent="Level 0-Intro/CountHandLeft" index="1" unique_id=2069806898]
+flip_h = true
+
+[node name="Level 1" type="Node3D" parent="." unique_id=894111796]
+
+[node name="GridMap" type="GridMap" parent="Level 1" unique_id=1151206246]
+transform = Transform3D(1, 0, 0, 0, -1.09278474e-07, -1, 0, 2.5, -4.371139e-08, 0, 0, -4)
+mesh_library = ExtResource("1_2q6dc")
+physics_material = SubResource("PhysicsMaterial_c1pbi")
+data = {
+"cells": PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65532, 65533, 0, 65532, 65532, 0, 65532, 65531, 0, 65532, 65530, 0, 65532, 65529, 0, 3, 0, 0, 65531, 65529, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 65534, 0, 65531, 65533, 0, 65531, 65532, 0, 65531, 65531, 0, 65531, 65530, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 19, 65535, 0, 19, 65534, 0, 20, 65534, 0, 20, 65535, 0, 20, 0, 0, 23, 0, 0, 23, 65535, 0, 23, 65534, 0, 24, 65534, 0, 24, 65535, 0, 24, 0, 0, 25, 0, 0, 25, 65535, 0, 26, 65535, 0, 26, 0, 0, 27, 0, 0, 27, 65535, 0, 28, 65535, 0, 28, 0, 0, 29, 65535, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 32, 65535, 0, 31, 65535, 0, 30, 65535, 0, 33, 65535, 0, 33, 0, 0, 34, 0, 0, 34, 65535, 0, 34, 65534, 0, 35, 65533, 0, 35, 65534, 0, 35, 65535, 0, 35, 0, 0, 34, 65533, 0, 36, 65533, 0, 37, 65533, 0, 38, 65533, 0, 39, 65533, 0, 40, 65533, 0, 40, 65534, 0, 40, 65535, 0, 39, 65535, 0, 39, 0, 0, 38, 0, 0, 37, 0, 0, 36, 0, 0, 36, 65535, 0, 36, 65534, 0, 37, 65534, 0, 38, 65534, 0, 39, 65534, 0, 38, 65535, 0, 37, 65535, 0, 40, 0, 0, 46, 0, 0, 46, 65535, 0, 47, 65535, 0, 48, 65535, 0, 49, 65535, 0, 50, 65535, 0, 51, 65535, 0, 51, 0, 0, 50, 0, 0, 49, 0, 0, 48, 0, 0, 47, 0, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 20, 2, 0, 20, 3, 0, 19, 3, 0, 18, 3, 0, 17, 3, 0, 16, 3, 0, 15, 3, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 14, 3, 0, 13, 3, 0, 12, 3, 0, 11, 2, 0, 10, 2, 0, 9, 2, 0, 8, 2, 0, 7, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 8, 3, 0, 7, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 6, 3, 0, 5, 3, 0, 4, 3, 0, 3, 3, 0, 2, 3, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 65534, 3, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65532, 2, 0, 65531, 2, 0, 65531, 3, 0, 6, 2, 0, 5, 2, 0, 4, 2, 0, 65532, 3, 0, 65533, 3, 0, 65530, 3, 0, 65530, 2, 0, 65530, 1, 0, 65530, 0, 0, 65530, 65535, 0, 65530, 65534, 0, 65530, 65532, 0, 65530, 65531, 0, 65530, 65533, 0, 65530, 65530, 0, 65530, 65529, 0, 65529, 65529, 0, 65528, 65529, 0, 65527, 65529, 0, 65527, 65530, 0, 65529, 65531, 0, 65528, 65530, 0, 65529, 65530, 0, 65529, 65532, 0, 65529, 65533, 0, 65529, 65534, 0, 65529, 65535, 0, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65528, 3, 0, 65528, 2, 0, 65527, 1, 0, 65527, 0, 0, 65527, 65535, 0, 65527, 65534, 0, 65527, 65533, 0, 65528, 65533, 0, 65528, 65532, 0, 65528, 65531, 0, 65527, 65531, 0, 65527, 65532, 0, 65528, 65534, 0, 65528, 65535, 0, 65528, 0, 0, 65528, 1, 0, 65527, 3, 0, 65527, 2, 0, 21, 0, 0, 22, 0, 0, 46, 1, 0, 45, 1, 0, 44, 1, 0, 43, 1, 0, 42, 1, 0, 41, 1, 0, 40, 1, 0, 52, 65535, 0, 53, 65535, 0, 54, 65535, 0, 55, 65535, 0, 56, 0, 0, 57, 0, 0, 58, 0, 0, 59, 0, 0, 60, 0, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 0, 0, 65, 0, 0, 58, 65535, 0, 57, 65535, 0, 56, 65535, 0, 52, 0, 0, 53, 0, 0, 54, 0, 0, 55, 0, 0, 66, 0, 0, 65, 65535, 0, 64, 65535, 0, 63, 65535, 0, 62, 65535, 0, 61, 65535, 0, 60, 65535, 0, 59, 65535, 0, 66, 65535, 0, 67, 65535, 0, 68, 65535, 0, 69, 65535, 0, 70, 65535, 0, 71, 0, 0, 72, 0, 0, 73, 0, 0, 74, 0, 0, 75, 0, 0, 76, 0, 0, 70, 0, 0, 69, 0, 0, 68, 0, 0, 67, 0, 0, 73, 65535, 0, 74, 65535, 0, 75, 65535, 0, 76, 65535, 0, 72, 65535, 0, 71, 65535, 0, 77, 65535, 0, 78, 65535, 0, 79, 65535, 0, 80, 65535, 0, 81, 65535, 0, 82, 65535, 0, 83, 65535, 0, 84, 65535, 0, 85, 65535, 0, 86, 65535, 0, 87, 65535, 0, 88, 65535, 0, 89, 65535, 0, 90, 65535, 0, 91, 65535, 0, 92, 65535, 0, 93, 65535, 0, 94, 65535, 0, 94, 0, 0, 93, 0, 0, 92, 0, 0, 91, 0, 0, 90, 0, 0, 89, 0, 0, 88, 0, 0, 87, 0, 0, 86, 0, 0, 85, 0, 0, 84, 0, 0, 83, 0, 0, 82, 0, 0, 81, 0, 0, 80, 0, 0, 79, 0, 0, 78, 0, 0, 77, 0, 0)
+}
+
+[node name="Dog" parent="Level 1" unique_id=1346528744 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.790379, 1.2249827, 0.47963297)
+rhythm_manager = NodePath("../../RhythmManager")
+player_node = NodePath("../../Player")
+
+[node name="Dog3" parent="Level 1" unique_id=16466723 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.38954, 3.3927054, 0.47963297)
+rhythm_manager = NodePath("../../RhythmManager")
+player_node = NodePath("../../Player")
+
+[node name="Dog2" parent="Level 1" unique_id=925525535 node_paths=PackedStringArray("rhythm_manager", "player_node") instance=ExtResource("73_7kuto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.09961, 7.2120223, 0.47963297)
+rhythm_manager = NodePath("../../RhythmManager")
+player_node = NodePath("../../Player")
+
+[node name="BgSky" type="Sprite3D" parent="Level 1" unique_id=2145883284 node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -42)
+extra_cull_margin = 16384.0
+pixel_size = 0.1
+render_priority = -20
+texture = ExtResource("68_u0n8q")
+script = ExtResource("68_d5irf")
+camera = NodePath("../../Player/Camera3D")
+scale_factor = 1.0
+
+[node name="Buildings" type="Node3D" parent="Level 1" unique_id=285581153 node_paths=PackedStringArray("rhythm_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, -15)
+script = ExtResource("71_u5upv")
+rhythm_manager = NodePath("../../RhythmManager")
+pulse_scale = Vector3(1, 1.05, 1)
+pulse_time = 0.2
+
+[node name="BgBuildings" type="Sprite3D" parent="Level 1/Buildings" unique_id=1632960721 node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+extra_cull_margin = 16384.0
+custom_aabb = AABB(-10000, -10000, -10000, 20000, 20000, 20000)
+pixel_size = 0.05
+render_priority = -2
+texture = ExtResource("67_jydfl")
+script = ExtResource("68_d5irf")
+camera = NodePath("../../../Player/Camera3D")
+pad_children_count = 4
+
+[node name="BgBuildings2" type="Sprite3D" parent="Level 1/Buildings/BgBuildings" unique_id=284002876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+extra_cull_margin = 16384.0
+flip_v = true
+pixel_size = 0.05
+render_priority = -2
+texture = ExtResource("67_jydfl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level 1" unique_id=80455973]
+transform = Transform3D(0.91025054, -0.23611267, 0.34013936, 0.022593854, 0.84857744, 0.5285886, -0.41344106, -0.473463, 0.7777527, 0, 30.719896, 14.432915)
+shadow_enabled = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=285545575]
 
 [node name="UI" type="Control" parent="CanvasLayer" unique_id=1387341097]
@@ -867,7 +1125,7 @@ script = ExtResource("87_1sbqr")
 rhythm_manager = NodePath("../../../RhythmManager")
 player = NodePath("../../../Player")
 
-[node name="BeatBar" type="ColorRect" parent="CanvasLayer/UI" unique_id=1014369005 node_paths=PackedStringArray("rhythm_manager")]
+[node name="BeatBar" type="ColorRect" parent="CanvasLayer/UI" unique_id=1014369005 node_paths=PackedStringArray("rhythm_manager", "player")]
 custom_minimum_size = Vector2(750, 15)
 layout_mode = 1
 anchors_preset = 7
@@ -884,6 +1142,7 @@ grow_vertical = 0
 color = Color(0, 0.6500001, 1, 0.7058824)
 script = ExtResource("71_vry8j")
 rhythm_manager = NodePath("../../../RhythmManager")
+player = NodePath("../../../Player")
 marker_scene = ExtResource("72_vry8j")
 
 [node name="BeatCenter" type="Control" parent="CanvasLayer/UI/BeatBar" unique_id=113054813 node_paths=PackedStringArray("rhythm_manager")]
@@ -974,3 +1233,5 @@ rhythm_manager = NodePath("../../../RhythmManager")
 player = NodePath("../../../Player")
 
 [node name="SceneTransition" parent="." unique_id=189451907 instance=ExtResource("76_s1acf")]
+
+[editable path="Level 0-Intro/CountHandLeft"]
