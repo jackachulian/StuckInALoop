@@ -87,6 +87,7 @@
 [ext_resource type="PackedScene" uid="uid://dp8lm0i3k1rno" path="res://scenes/scene_transition.tscn" id="76_s1acf"]
 [ext_resource type="Script" uid="uid://cl58uijybdsf7" path="res://scripts/hurtbox.gd" id="78_kbk4x"]
 [ext_resource type="Shader" uid="uid://yj5m57rtgpj4" path="res://shaders/dots.gdshader" id="84_iobf8"]
+[ext_resource type="Script" uid="uid://ci3ruampdjx7q" path="res://scripts/dot_vignette_pulse.gd" id="87_1sbqr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c1pbi"]
 radius = 1.1269531
@@ -377,7 +378,7 @@ shader_parameter/_max = 1.0
 shader_parameter/outer_radius = -0.6579997937549997
 shader_parameter/dots_width = 2.246000344185
 shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/dots_color = Color(0, 0, 0, 0.32156864)
+shader_parameter/dots_color = Color(0, 0, 0, 0.4117647)
 shader_parameter/height = 0.0
 
 [node name="Game" type="Node3D" unique_id=1628288231]
@@ -664,7 +665,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DotVignette" type="ColorRect" parent="CanvasLayer/UI" unique_id=1947052414]
+[node name="DotVignette" type="ColorRect" parent="CanvasLayer/UI" unique_id=1947052414 node_paths=PackedStringArray("rhythm_manager")]
 material = SubResource("ShaderMaterial_kbk4x")
 layout_mode = 1
 anchors_preset = 15
@@ -675,5 +676,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+script = ExtResource("87_1sbqr")
+rhythm_manager = NodePath("../../../RhythmManager")
 
 [node name="SceneTransition" parent="." unique_id=189451907 instance=ExtResource("76_s1acf")]

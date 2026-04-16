@@ -42,12 +42,15 @@ func _ready() -> void:
 func _on_frame_changed():
 	var hit_direction := 1 if facing_right else -1
 	
+	var perfect: bool = hit_effectiveness == RhythmManager.HitEffectiveness.Perfect
+	var knockback_mult: float = 1.5 if hit_effectiveness == RhythmManager.HitEffectiveness.Perfect else 1.0
+	
 	if animated_sprite_3d.animation == "punch_middle" and animated_sprite_3d.frame == 1:
-		punch_middle_hitbox.hit(Vector3(hit_direction*12.5, 10.0, 0.0))
+		punch_middle_hitbox.hit(Vector3(hit_direction*8.0, 5.0, 0.0)*knockback_mult, 2 if perfect else 1)
 	elif animated_sprite_3d.animation == "punch_high" and animated_sprite_3d.frame == 1:
-		punch_high_hitbox.hit(Vector3(hit_direction*5.0, 15.0, 0.0))
+		punch_high_hitbox.hit(Vector3(hit_direction*8.0, 18.0, 0.0)*knockback_mult, 1)
 	elif animated_sprite_3d.animation == "punch_low" and animated_sprite_3d.frame == 1:
-		punch_low_hitbox.hit(Vector3(hit_direction*22.5, 7.5, 0.0))
+		punch_low_hitbox.hit(Vector3(hit_direction*22.5, 5.0, 0.0)*knockback_mult, 1)
 	
 func _on_anim_finished() -> void:
 	# Attack finish

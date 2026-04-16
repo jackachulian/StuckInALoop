@@ -4,6 +4,9 @@ extends Area3D
 @export var attacker_entity: CharacterBody3D
 @export var damage: int = 1
 @export var can_always_hit: bool
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+
+@export var tags: Array[String]
 
 # Ensure this only hits once per attack
 var can_hit: bool
@@ -28,6 +31,9 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area3D):
 	if area == attacker_entity.hurtbox:
 		return
+		
+	if tags.has("dog") and area.get("tags") is Array and area.tags.has("dog"):
+		return 
 	
 	if (can_hit or can_always_hit) and area.has_method("take_damage") and area.monitorable:
 		can_hit = false

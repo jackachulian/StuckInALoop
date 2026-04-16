@@ -19,6 +19,8 @@ extends CharacterBody3D
 @onready var flip_parent: Node3D = $FlipParent
 @onready var dog_hitbox: Hitbox = $DogHitbox
 @onready var hurtbox: Hurtbox = $DogHurtbox
+@onready var hitbox: Hitbox = $DogHitbox
+
 
 var facing_right: bool = true
 var hurt_timer := 0.0
@@ -108,6 +110,16 @@ func take_damage(damage: int):
 		queue_free()
 	else:
 		flash_damage()
+		
+		hitbox.monitoring = false
+		hitbox.monitorable = false
+		hitbox.collision_shape_3d.disabled = true
+		
+		await get_tree().create_timer(0.25).timeout
+	
+		hitbox.monitoring = true
+		hitbox.monitorable = true
+		hitbox.collision_shape_3d.disabled = false
 
 func flash_damage():
 	animated_sprite_3d.material_override.set_shader_parameter("flash_strength", 1.0)
