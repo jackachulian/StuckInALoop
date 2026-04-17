@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 # ==== DOG
 
+@export var game_manager: GameManager
 @export var rhythm_manager: RhythmManager
 @export var player_node: Node3D
 @export var health: int = 5
@@ -26,6 +27,7 @@ var facing_right: bool = true
 var hurt_timer := 0.0
 
 func _ready() -> void:
+	await get_tree().create_timer(0.1).timeout
 	#animated_sprite_3d.animation_finished.connect(_on_anim_finished)
 	animated_sprite_3d.frame_changed.connect(_on_frame_changed)
 	#rhythm_manager.beat.connect(_on_beat)
@@ -114,6 +116,7 @@ func take_damage(damage: int):
 		defeated_dog_instance.global_position = global_position
 		defeated_dog_instance.velocity = velocity * 0.5
 		
+		game_manager.add_points(500)
 		queue_free()
 	else:
 		flash_damage()

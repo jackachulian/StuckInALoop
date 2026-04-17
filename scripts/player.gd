@@ -24,6 +24,7 @@ extends CharacterBody3D
 @onready var effectiveness_label: RhythmEffectivenessText = $EffectivenessLabel
 @onready var rhythm_camera: RhythmCamera = $Camera3D
 @onready var hit_sound_player: AudioStreamPlayer3D = $Camera3D/HitSoundPlayer
+@onready var note_player: AudioStreamPlayer3D = $Camera3D/NotePlayer
 
 signal health_changed
 signal control_changed
@@ -201,6 +202,7 @@ func take_damage(damage: int):
 		animated_sprite_3d.animation = "hurt"
 		await animated_sprite_3d.animation_finished
 		hide()
+		GameManager.points = 0
 		scene_transition.transition_to_scene("res://scenes/level.tscn")
 	else:
 		hit_invincibility_timer = hit_invincibility_time

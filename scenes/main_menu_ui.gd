@@ -26,6 +26,7 @@ func _ready() -> void:
 	
 func _on_play_pressed():
 	confirm_sound_player.play()
+	GameManager.points = 0
 	scene_transition.transition_to_scene("res://scenes/level.tscn")
 
 func _on_credits_pressed():

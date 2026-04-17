@@ -105,7 +105,7 @@ floor_block_on_wall = false
 floor_snap_length = 0.2
 script = ExtResource("1_laypt")
 health = 10
-speed = 6.0
+speed = 4.0
 jump_velocity = 30
 defeated_dog = ExtResource("2_jlmqp")
 

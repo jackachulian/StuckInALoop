@@ -41,7 +41,7 @@ func consume_beat() -> HitEffectiveness:
 	var closest_beat_offset_seconds: float = closest_beat_offset / beats_per_second
 	var next_beat_offset_seconds: float = (closest_beat+1 - current_beat) / beats_per_second
 	
-	var effectiveness_max_diffs := [999, 0.130, 0.115, 0.095, 0.070]
+	var effectiveness_max_diffs := [999, 0.150, 0.125, 0.100, 0.075]
 	var effectiveness := HitEffectiveness.Miss
 	
 	for i in range(1, len(effectiveness_max_diffs)):
@@ -53,6 +53,10 @@ func consume_beat() -> HitEffectiveness:
 	
 func _process(delta: float) -> void:
 	var playback_pos = music_player.get_playback_position()
+	if (playback_pos > 82.848):
+		beats_per_second = 170.0 / 60.0
+	
+	
 	current_beat += beats_per_second * (playback_pos - last_process_playback_pos)
 	last_process_playback_pos = playback_pos
 	
